@@ -1,0 +1,125 @@
+{
+  "main": {
+    "id": "69d89820fb96a78b",
+    "type": "split",
+    "children": [
+      {
+        "id": "54e2b53f9c6fe127",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Start_git.md",
+            "mode": "preview"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "558ef32d0239d42a",
+    "type": "split",
+    "children": [
+      {
+        "id": "4254e2acc3a4c065",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a0f4e8420251f6eb",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "f5945f207112f0af",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "passw",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "horizontal",
+    "width": 227,
+    "collapsed": true
+  },
+  "right": {
+    "id": "da4bf7ce9553f1e6",
+    "type": "split",
+    "children": [
+      {
+        "id": "7d8a816168768041",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3a93264bfd6168d6",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Start_git.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "e510c7563ca50eb9",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "f9b528ba2dbce219",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Start_git.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "54e2b53f9c6fe127",
+  "lastOpenFiles": [
+    "Start_git.md",
+    "Git.md",
+    "Контекстный менеджер.md",
+    "Hash Py.md",
+    "OpenSSH в Windows 10.md",
+    "PostgreSQL.md",
+    "Proxy.md",
+    "WiFi.md",
+    "SQL/Выборка данных таблицы SQL.md",
+    "SQL/SQL.md"
+  ]
+}
