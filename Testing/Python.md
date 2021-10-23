@@ -1,8 +1,8 @@
 2020-12-03 16:47
-#питон #глобальные #переменные [python](https://www.python.org/)
+#питон #глобальные #переменные
 # Python
 [[Основы Python]]  | 
-[[Библиотека Python]] | [[multiprocessing]] | [[asyncio]]
+[[Библиотека Python]] |  
 [[Python WEB]]
 [[VenvPy]]
 [[Сниппеты Python]] 

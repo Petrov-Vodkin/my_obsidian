@@ -28,6 +28,7 @@
 #### SQL
 [[SQL]] | [[sqlite3]] | [[Pandas]] | [[psycopg2]] - postgress | 
 [[mysqlclient]] - MySQL | [[SQLAlchemy]] - [[ORM]](`работа с большим количеством баз данных`)
+[[cx_Oracle]] - oracle
 
 ### DEFOLT
 ---__[[multiprocessing]]__---

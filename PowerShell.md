@@ -2,7 +2,7 @@
 #powershell
 # PowerShell 
 [Первые шаги](https://habr.com/ru/post/113913/)
-### [[Alias]]
+### [[Alias]] | [[ScriptPowerShell]]
 ### Команды
 ```powershell
 systeminfo	# systeminfo ))
@@ -80,7 +80,34 @@ $file.IsReadOnly = $true
 ```
 ### [[Функции в Powershell]]
  вызывов | передача параметров | возвращение значений | .........
+<<<<<<< HEAD
  экранирование: `'строка дословно`a'`     в общем ё перед переменной
+=======
+ экранирование: `'строка дословно`a'`     `в общем ё перед переменной
+
+#### [Unsplash и PowerShell для установки обоев рабочего стола](http://dimayakovlev.ru/notebook/unsplash-powershell-wallpaper/)
+```powershell
+# Получение текущего разрешения экрана по горизонтали и вертикали
+$horRes = (Get-WmiObject -Class Win32_VideoController).CurrentHorizontalResolution
+$vertRes = (Get-WmiObject -Class Win32_VideoController).CurrentVerticalResolution
+
+# Путь к файлу изображения
+$file = Join-Path -Path ([Environment]::GetFolderPath('MyPictures')) -ChildPath "UnsplashWallpaper.${horRes}x${vertRes}.jpg"
+
+# URL для отправки запроса
+$url = "https://source.unsplash.com/collection/1065396/${horRes}x${vertRes}"
+
+# Загрузка файла изображения
+Invoke-WebRequest -Uri $url -OutFile $file
+
+# Установка обоев рабочего стола
+Set-ItemProperty -Path 'HKCU:\Control Panel\Desktop\' -Name WallPaper -value $file
+rundll32.exe user32.dll, UpdatePerUserSystemParameters 1, True
+```
+
+Сохраните код скрипта в файл _Get-UnsplashWallpaper.ps1_ и запустите. После завершения работы скрипта в качестве обоев будет установлено случайное изображение из [курируемой коллекции обоев](https://unsplash.com/wallpaper/1065396/desktop-wallpapers) для рабочего стола Unsplash.
+
+>>>>>>> w_pc
 ### Help
 ```bash
 Save-Help					# загрузка файлов справки из Интернета и сохранение их в общей папке.
