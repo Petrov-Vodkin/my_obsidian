@@ -1,19 +1,17 @@
 2020-12-07 15:37
 #git #гит #github
 # GIT
-### [[Откатиться GIT]] 
-### [[Git config]]
-### [[Start_git]]
+### [[Откатиться GIT]] |  [[Git config]] |  [[Start_git]]
 
 ```bash
 git add "name || dir" 	# забросить файл name или dir  
 git add . 				# все требующие коммит
 git commit -m "message" # закомитить
 	git commit -am 		# добавит и зафиксирует все изменить в репозиторий
-git push #  отправит добавленные фвйлы в репо
-git pull # получить файлы  
-git rm -r --cached 'name' #  удалить 'name' (папку\файлы) из репо 
-git commit --amend -m 'New commit message' #  перезапишет сообщение последнего коммита
+git push				#  отправит добавленные фвйлы в репо
+git pull				# получить файлы  
+git rm -r --cached 'name'					#  удалить 'name' (папку\файлы) из репо 
+git commit --amend -m 'New commit message'	#  перезапишет сообщение последнего коммита
 								"Пример"
 			git commit -m 'Initial commit'
 			git add forgotten_file
@@ -31,21 +29,21 @@ git reset --hard HEAD^1	# жёстко вернуться на 1н(HEAD^1) commi
 git branch					# вывести: все ветки
 			-v				# вывести: ветка + коммит
 git branch name_banch		# создать ветку name_banch
+git branch -D name_branch	# Dell branch - name_branch
+
 git checkout name_banch		# подключиться к name_banch
 git checkout -b name_branch	# создать ветку name_banch & подключиться к ней
 git branch -m NEW_NAME		# переименовать активную ветку
 git checkout HashCommit		# откатиться к коммиту
 
-git push 					# сохранить изменения(добавить) активной ветки в репо
+							'Основы слияния'
+# Все, что нужно сделать — переключиться на ветку, в которую вы хотите включить изменения, и выполнить команду git merge:
+git checkout master
+git merge iss53
 
-git branch -D name_branch	# Dell branch - name_branch
 ```
 `gitk` — графическая утилита, которая показывает наш граф. В качестве ключей передаём имена веток или `--all`, чтобы показать все.
- ```console
-git init
-git commit -m 'Initial project version'
-```
- ### Добавление репозитория на GitHub[](https://askdev.ru/q/mozhno-li-sozdat-udalennoe-repo-na-github-iz-cli-bez-otkrytiya-brauzera-4384/)
+### Добавление репозитория на GitHub[](https://askdev.ru/q/mozhno-li-sozdat-udalennoe-repo-na-github-iz-cli-bez-otkrytiya-brauzera-4384/)
 ```shell
 git config --list # all inf (name, mail ......)
 git init	# инициализировать репозиторий в dir(проэкта)
