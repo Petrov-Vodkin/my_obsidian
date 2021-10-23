@@ -1,0 +1,17 @@
+{
+  "obsidianCss": true,
+  "alwaysUpdateLinks": true,
+  "promptDelete": false,
+  "spellcheck": true,
+  "vimMode": false,
+  "foldIndent": false,
+  "showFrontmatter": false,
+  "enabledPlugins": [],
+  "spellcheckDictionary": [
+    "Proxying",
+    "pytest",
+    "appium",
+    "aiogram",
+    "aiogram"
+  ]
+}

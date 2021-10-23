@@ -1,0 +1,54 @@
+2020-12-08 19:56
+#selenium #библиотека #модуль #плагины 
+# Библиотека Python
+[[AIOHTTP]] - выполнение асинхронных HTTP-запросов
+[[Telegram Bot]] [[aiogram]]
+[[Requests]]+[](https://smartiqa.ru/blog/python-requests)
+
+
+[[NumPy]]- работа с массивами
+
+[[Selenium]] - web driver для браузеров(управление браузером)
+[[BeautifulSoup]] - парсинг(статический)
+
+[[VenvPy]] - виртуальная среда
+[[PyTest]]
+[pytest-benchmark](https://pytest-benchmark.readthedocs.io/en/latest/usage.html) - замер времени выполнения ф-й(кода)
+
+[[Mimesis]] - фиктивные данные (pass, login. mail, address.......)
+[essential_generators](https://github.com/shane-mason/essential-generators) - фиктивные данные
+[[Enum]] - ?? 
+
+[pytube](https://t.me/c/1400358557/82) - Скачиваем видео с ютуба
+
+[pyodbc](https://dvsemenov.ru/dostup-k-bazam-dannyx-v-python-s-pomoshhyu-pyodbc/) - работа с базой данных
+
+[[Flask]] - микрофреймворк для веб-разработки
+[[Jinja]] - шаблонизатор для языка программирования Python
+#### SQL
+[[SQL]] | [[sqlite3]] | [[Pandas]] | [[psycopg2]] - postgress | 
+[[mysqlclient]] - MySQL | [[SQLAlchemy]] - [[ORM]](`работа с большим количеством баз данных`)
+[[cx_Oracle]] - oracle
+
+### DEFOLT
+---__[[multiprocessing]]__---
+[os](https://egorovegor.ru/python-os-module/)
+[pathlib](https://t.me/c/1400358557/65)  - Работаем с файловыми путями
+[[pickle]] принимает `любой объект` Python, преобразует его в str & `сохраняет в файл`
+
+[[sqlite3]]
+
+[[datetime]]
+[[itertools]] (extend) расширение списка с помощью итераторов
+
+[dataclasses](https://t.me/c/1400358557/64) - класс, с реализованными методами init, repr, str и eq
+[contextlib](https://docs-python.ru/standart-library/modul-contextlib-python/)- создания менеджеров контекста
+
+#### Отладка
+[`tracemalloc`](https://docs-python.ru/standart-library/modul-tracemalloc-python/ "Модуль tracemalloc в Python, отслеживание блоков памяти.") - это отладочный инструмент для отслеживания блоков памяти, выделенных программе на Python.
+
+[Встроенные функции Python](https://docs-python.ru/tutorial/vstroennye-funktsii-interpretatora-python/ "Встроенные функции Python.")
+____________________________
+#### Links
+ [[Python]] 
+ [Топ-100 самых популярных пакетов в PyPI](https://pythonist.ru/top-100-samyh-populyarnyh-paketov-v-pypi/)
