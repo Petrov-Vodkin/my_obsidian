@@ -1,7 +1,7 @@
 2020-12-07 15:37
 #git #гит #github
 # GIT
-### [[Откатиться GIT]] |  [[Git config]] |  [[Start_git]]
+### [[Откатиться GIT]] |  [[Git config]] |  [[Start_git]] | [[Шпаргалка Git]]
 
 ```bash
 git add "name || dir" 	# забросить файл name или dir  
