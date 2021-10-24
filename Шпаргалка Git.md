@@ -104,3 +104,4 @@ git remote add [remote][url] # добавить новый удаленный р
 -   Git Rebase: [руководство по использованию](http://habrahabr.ru/post/161009/).
 _____________
 #### Links
+https://agladky.ru/blog/git-cheat-sheet/

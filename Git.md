@@ -7,15 +7,13 @@
 git add "name || dir" 	# забросить файл name или dir  
 git add . 				# все требующие коммит
 git commit -m "message" # закомитить
-	git commit -am 		# добавит и зафиксирует все изменить в репозиторий
-git push				#  отправит добавленные фвйлы в репо
+		   -am 			# добавит и зафиксирует все изменить в репозиторий
+git push				# отправит добавленные фвйлы в репо
+		 --force (-f)	# если на сервере есть изменения, которых нет в локальном хранилище
 git pull				# получить файлы  
 git rm -r --cached 'name'					#  удалить 'name' (папку\файлы) из репо 
-git commit --amend -m 'New commit message'	#  перезапишет сообщение последнего коммита
-								"Пример"
-			git commit -m 'Initial commit'
-			git add forgotten_file
-			git commit --amend
+# 					'перезапишет сообщение последнего коммита'
+git commit --amend -m 'New commit message'	#
 								"ОТКАТ"
 # до команды add .
 git checkout .			# откатиться()(. == все файлы || указать конкретный фаил для отката изменений)к текущему коммиту

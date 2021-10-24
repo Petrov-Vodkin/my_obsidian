@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Git config.md",
+            "file": "Git.md",
             "mode": "preview"
           }
         }
@@ -70,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Git config.md",
+                "file": "Git.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,7 +98,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Git config.md"
+                "file": "Git.md"
               }
             }
           }
@@ -111,9 +111,9 @@
   },
   "active": "82e00e4077329147",
   "lastOpenFiles": [
-    "Git config.md",
     "Git.md",
     "Шпаргалка Git.md",
+    "Git config.md",
     "PowerShell.md",
     "ScriptPowerShell.md",
     "Откатиться GIT.md",
