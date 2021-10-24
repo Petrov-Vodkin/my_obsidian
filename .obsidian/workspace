@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "82e00e4077329147",
+        "id": "54e2b53f9c6fe127",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Git config.md",
+            "file": "Трюки в Python.md",
             "mode": "preview"
           }
         }
@@ -39,7 +39,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "passw",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -70,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Git config.md",
+                "file": "Трюки в Python.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,7 +98,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Git config.md"
+                "file": "Трюки в Python.md"
               }
             }
           }
@@ -109,17 +109,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "82e00e4077329147",
+  "active": "54e2b53f9c6fe127",
   "lastOpenFiles": [
-    "Git config.md",
+    "Трюки в Python.md",
+    "Сниппеты Python.md",
     "Git.md",
-    "Шпаргалка Git.md",
-    "PowerShell.md",
-    "ScriptPowerShell.md",
     "Откатиться GIT.md",
-    "SQL/SQL.md",
+    "Start_git.md",
     "SQL/Выборка данных таблицы SQL.md",
-    "SQL/Соединение таблиц INNER JOIN.md",
-    "Windows.md"
+    "Контекстный менеджер.md",
+    "Hash Py.md",
+    "OpenSSH в Windows 10.md",
+    "PostgreSQL.md"
   ]
 }

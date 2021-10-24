@@ -122,11 +122,8 @@ except:
 #### Сортировка списка строкске:
 ```py
 list1 = ["Karl","Larry","Ana","Zack"]
-
-# Метод 1: sort()
-list1.sort()
-# Метод 2: sorted()
-sorted_list = sorted(list1)
+list1.sort()				# Метод 1: sort()
+sorted_list = sorted(list1) # Метод 2: sorted()
 ```
 ### Генератор списков с If и Else
 ```py
