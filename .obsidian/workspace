@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Откатиться GIT.md",
+            "file": "Git.md",
             "mode": "preview"
           }
         }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Откатиться GIT.md",
+                "file": "Git.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,7 +97,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Откатиться GIT.md"
+                "file": "Git.md"
               }
             }
           }
@@ -110,7 +110,7 @@
   },
   "active": "de91957f30b196c5",
   "lastOpenFiles": [
-    "Откатиться GIT.md",
-    "Git.md"
+    "Git.md",
+    "Откатиться GIT.md"
   ]
 }
