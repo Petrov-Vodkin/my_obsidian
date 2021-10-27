@@ -17,7 +17,7 @@ logging.basicConfig(level=logging.INFO)
 
 # Хэндлер на команду /test1: ввод /test1 запустит функ-ю cmd_test1
 @dp.message_handler(commands="test1") # зарегистрировать функцию как обработчик сообщений
-async def cmd_test1(message: types.Message):
+async def cmd_test1(message: types.Message): # аннотация message: types.Message
     await message.reply("Test 1")
 
 if __name__ == "__main__":

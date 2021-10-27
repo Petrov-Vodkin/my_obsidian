@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Git.md",
+            "file": "PowerShell.md",
             "mode": "preview"
           }
         }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Git.md",
+                "file": "PowerShell.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,7 +97,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Git.md"
+                "file": "PowerShell.md"
               }
             }
           }
@@ -110,6 +110,10 @@
   },
   "active": "de91957f30b196c5",
   "lastOpenFiles": [
+    "PowerShell.md",
+    "aiogram.md",
+    "ScriptPowerShell.md",
+    "asyncio.md",
     "Git.md",
     "Откатиться GIT.md"
   ]
