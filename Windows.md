@@ -17,7 +17,7 @@
 [Восстановление и прошивка флешки по VID и PID](https://repairflash.ru/vosstanovlenie-fleshki-po-vid-i-pid.html)
 [фон рабочего стола: gpedit.msc = редактор групповой политики](https://ucompa.ru/windows-10/ne-udaetsja-izmenit-fon-rabochego-stola-v-windows-10-vot-kak-jeto-ispravit)
 [проверка и восстановление системных компонентов образа Win 10](https://winitpro.ru/index.php/2019/07/08/dism-cleanup-image-restorehealth/) `sfc /scannow`+` DISM`
-```powershell
+```shell
 					"Утилиты windows"
 net 		# 
     [ ACCOUNTS | COMPUTER | CONFIG | CONTINUE | FILE | GROUP | HELP |
@@ -30,6 +30,8 @@ netsh 		# управлять брандмауэром Windows
 netsh advfirewall firewall добавить имя правила = «Открыть порт 80» dir = in action = allow protocol = TCP localport = 80
 
 winhex		# hex редактор
+
+certmgr.msc # менеджер сертификатов
 ```
 
 C:\Windows\System32\drivers\etc\hosts 
