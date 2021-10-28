@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Gitignore.md",
+            "file": "Git.md",
             "mode": "preview"
           }
         }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Gitignore.md",
+                "file": "Git.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,7 +97,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Gitignore.md"
+                "file": "Git.md"
               }
             }
           }
@@ -110,24 +110,15 @@
   },
   "active": "de91957f30b196c5",
   "lastOpenFiles": [
-    "Gitignore.md",
-    "Windows.md",
     "Git.md",
     "Основы Python.md",
     "Gitignore.md",
     "asyncio.md",
     "Json.md",
     "Python.md",
-<<<<<<< Updated upstream
-    "Scoop.md",
-    "PowerShell.md",
-    "Первоначальная настройка Git.md",
-    "Lenovo.md"
-=======
     "Dict Py.md",
     "Testing/Библиотека Python.md",
     "random_mod_py.md",
     "Сниппеты Python.md"
->>>>>>> Stashed changes
   ]
 }
