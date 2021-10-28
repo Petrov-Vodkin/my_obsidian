@@ -7,7 +7,9 @@
 [[Файлы в python]]
 
 [[Hash Py]]
-[[Типы данных]] | [[Mutable Immutable]] | [[Set Py]]
+
+[[Типы данных]] | [[Mutable Immutable]] | [[Set Py]] | [[Dict Py]] | [[Str Py]]
+
 [[Основы управления памятью в Python]]
 Метаклассы магические методы
 Алгоритмы (Big_O, сортировки)

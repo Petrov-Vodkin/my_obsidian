@@ -168,6 +168,7 @@ from random import shuffle
 list_example = [1,2,3,4,5,6,7,8]
 shuffle(list_example)
 ```
+
 #### Сортировка списка словарей
 ```py
 dict1 = [{"Name":"Karl", "Age":25}, {"Name":"Lary", "Age":39}, {"Name":"Nina", "Age":35}]
@@ -192,6 +193,14 @@ s1=str(''.join(([i for i in s if i!=' '])))
 #Функция `replace()`:
 s1 = s.replace(' ','')
 ```
+```py
+# получить случайную строку из txt
+import random
+with open ('myfile.txt', 'r') as file:
+    lines = file.readlines()
+    print(random.choice(lines))
+```
+
 _____________
 #### Links
 [[Python]]

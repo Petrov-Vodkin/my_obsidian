@@ -1,6 +1,8 @@
 2021-02-26 13:53
 #json
 # Json 
+[Online Viewer](https://jsonformatter.org/json-viewer) 
+
 ```python
 "Запись в фаил"
 with open("dict_name.json", "w") as file:					# имя словаря.json

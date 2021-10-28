@@ -16,6 +16,7 @@
 [pytest-benchmark](https://pytest-benchmark.readthedocs.io/en/latest/usage.html) - замер времени выполнения ф-й(кода)
 
 [[Mimesis]] - фиктивные данные (pass, login. mail, address.......)
+[[random_mod_py]]
 [essential_generators](https://github.com/shane-mason/essential-generators) - фиктивные данные
 [[Enum]] - ?? 
 
