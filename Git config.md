@@ -35,13 +35,5 @@ function gm() {
 }
 # gm "This is my message"
 ```
-An alternative approach is:
-```powershell
-									'powershell'
-function gm() {
-     git commit -am "$*" && git push
-}
-# gm This is my message
-```
 _____________
 #### Links
