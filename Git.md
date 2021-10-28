@@ -11,6 +11,7 @@ git commit -m "message" # закомитить
 git push				# отправит добавленные фвйлы в репо
 		 --force (-f)	# если на сервере есть изменения, которых нет в локальном хранилище
 git pull				# получить файлы  
+			 --rebase	# для начала git reset
 git rm -r --cached 'name'					#  удалить 'name' (папку\файлы) из репо 
 # 					'перезапишет сообщение последнего коммита'
 git commit --amend -m 'New commit message'	#
