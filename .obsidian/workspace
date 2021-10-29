@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Python.md",
+            "file": "Git.md",
             "mode": "preview"
           }
         }
@@ -69,7 +69,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Python.md",
+                "file": "Git.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,7 +97,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Python.md"
+                "file": "Git.md"
               }
             }
           }
@@ -110,10 +110,10 @@
   },
   "active": "de91957f30b196c5",
   "lastOpenFiles": [
-    "Python.md",
-    "Основы Python.md",
     "Git.md",
+    "Основы Python.md",
     "Git config.md",
+    "Python.md",
     "Gitignore.md",
     "asyncio.md",
     "Json.md",
