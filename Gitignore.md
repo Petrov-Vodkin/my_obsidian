@@ -16,11 +16,25 @@ foo.txt		# Игнорировать файл foo.txt.
 /bar/*.css	# Игнорировать css файлы из папки bar не включая подпапки
 /bar/**.*.js# Игнорировать js файлы из папки bar и подпапок, если таковые будут
 ```
+## Игнорирование ранее зафиксированных файлов
 
+Файлы в вашей рабочей копии могут отслеживаться или не отслеживаться.
+
+Чтобы проигнорировать файл, который был ранее зафиксирован, вам нужно будет удалить его из индекса, а затем добавить правило для файла в `.gitignore`:
+
+```bash
+# Если вы хотите удалить файл как из индексной, так и из локальной файловой системы, опустите опцию `--cached`.
+git rm --cached filename 	# --cached говорит не удалять файл из рабочего дерева, а только удалять его из индекса
+
+git rm -r --cached filename # рекурсивное удаления каталога используйте параметр `-r`:
+git rm -r -n directory		# `-n`, которая выполнит пробный запуск и покажет, какие файлы будут удалены:
+```
 .gitignore нужен для скрытия файлов и папок от системы контроля версий [Git](http://tyapk.ru/blog/post/learning-git). Обычно скрывают конфигурационные файлы (особенно с паролями), временные файли и папки. gitignore использует [glob формат](https://www.wikiwand.com/en/Glob_(programming)) для выборки файлов.
 
 [ Игнорирование файлов и каталогов в Git](https://andreyex.ru/linux/ignorirovanie-fajlov-i-katalogov-v-git-gitignore/)
 
 [gitignore Manual Page](https://www.kernel.org/pub/software/scm/git/docs/gitignore.html)
 
-#### [[Git]]
+#### Link
+[[Git]]
+https://devacademy.ru/article/ignorirovanie-faylov-i-katalogov-v-git 

@@ -1,7 +1,7 @@
 2020-12-07 15:37
 #git #гит #github
 # GIT
-### [[Откатиться GIT]] |  [[Git config]] |  [[Start_git]] | [[Шпаргалка Git]]
+### [[Откатиться GIT]] |  [[Git config]] |  [[Start_git]] | [[Шпаргалка Git]] | [[Gitignore]]
 
 ```bash
 git add "name || dir" 	# забросить файл name или dir  
@@ -79,7 +79,6 @@ git status
 ### [**hub**](https://hub.github.com/)
 — консольное приложение, упрощающее введение команд git и позволяющее производить некоторые недоступные для git действия в удалённых репозиториях из терминала
 #### Links
-[[Gitignore]]
 [Video Уроки по GIT](https://www.youtube.com/playlist?list=PLuY6eeDuleIOMB2R_Kky05ZfiAx2_pbAH)
 [Git для начинающих](https://webdevkin.ru/courses/git/git-commit)
 [Exempl commit](https://github.com/tpope/vim-pathogen/commits/master)
