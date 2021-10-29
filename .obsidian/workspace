@@ -9,7 +9,11 @@
         "state": {
           "type": "markdown",
           "state": {
+<<<<<<< Updated upstream
             "file": "Git.md",
+=======
+            "file": "Asynh Py.md",
+>>>>>>> Stashed changes
             "mode": "preview"
           }
         }
@@ -69,7 +73,11 @@
             "state": {
               "type": "backlink",
               "state": {
+<<<<<<< Updated upstream
                 "file": "Git.md",
+=======
+                "file": "Asynh Py.md",
+>>>>>>> Stashed changes
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,7 +105,11 @@
             "state": {
               "type": "outline",
               "state": {
+<<<<<<< Updated upstream
                 "file": "Git.md"
+=======
+                "file": "Asynh Py.md"
+>>>>>>> Stashed changes
               }
             }
           }
@@ -110,6 +122,7 @@
   },
   "active": "de91957f30b196c5",
   "lastOpenFiles": [
+<<<<<<< Updated upstream
     "Git.md",
     "Основы Python.md",
     "Git config.md",
@@ -120,5 +133,17 @@
     "Dict Py.md",
     "Testing/Библиотека Python.md",
     "random_mod_py.md"
+=======
+    "Asynh Py.md",
+    "EventLoop.md",
+    "Python.md",
+    "Gitignore.md",
+    "Windows.md",
+    "Git.md",
+    "Основы Python.md",
+    "Файлы в python.md",
+    "Scoop.md",
+    "PowerShell.md"
+>>>>>>> Stashed changes
   ]
 }
