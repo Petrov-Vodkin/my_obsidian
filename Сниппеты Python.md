@@ -168,7 +168,7 @@ from random import shuffle
 list_example = [1,2,3,4,5,6,7,8]
 shuffle(list_example)
 ```
-
+### Словари
 #### Сортировка списка словарей
 ```py
 dict1 = [{"Name":"Karl", "Age":25}, {"Name":"Lary", "Age":39}, {"Name":"Nina", "Age":35}]
@@ -182,7 +182,8 @@ dict1.sort(key=f)
 dict1 = sorted(dict1, key=lambda item: item.get("Age"))
 ```
 В Python 3 версии оператор `/=` выполнит вещественное деление (т.е. вернется результат с точкой), а оператор `//` целочисленное.
-## Строки
+
+### Строки
 **Удалить пробелы из строки (string) “aaa bbb ccc ddd eee”?**
 ```python
 #Функция `join()`:
@@ -200,7 +201,18 @@ with open ('myfile.txt', 'r') as file:
     lines = file.readlines()
     print(random.choice(lines))
 ```
+### Генераторы
+```py
+# генератор уникальных имен файла на основе времени
+from time import time  
 
+
+def gen_filename():  
+    while 1:  
+        t = int(time()) * 1000  
+		yield f'{t}.jpeg'
+		# можно ещё добавить код или ещё yield
+```
 _____________
 #### Links
 [[Python]]
