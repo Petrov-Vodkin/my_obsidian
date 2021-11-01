@@ -1,31 +1,88 @@
 2021-10-29 04:40
 #tag
 # EventLoop
+#### Asyncio,async/await
+```py
+
+
+```
+#### Корутины_yield_from
+```py
+def coroutine(func):    # 'starter' для генератора  
+	def inner(*args, **kwargs):  
+        g = func(*args, **kwargs)  
+        g.send(None)    # или next(g)  
+		return g  
+	return inner  
+  
+  
+class BlablaExeption(Exception):  
+    pass  
+  
+  
+@coroutine  
+def sub_gen():  
+    while 1:  
+        try:  
+            message = yield  
+ 		except StopIteration:  
+            break  
+ 		else:  
+            print('_____________', message, '_________________')  
+    return 'Возвращаемое значение после while'  
+  
+  
+@coroutine  
+def delegate(g):  
+	result = yield from g    # содеожит инициализ-ю подгенератора (@coroutine не нужно)  
+	print(result)           # вывод значения sub_gen после завершения while  
+# yield from заменяет весь код, что ниже в комменте
+# while 1: #     try: #         data = yield #         g.send(data) #     except BlablaExeption as e: #         g.throw(e)  
+gen = delegate(sub_gen()) # == # s_g = sub_gen() + # gen = delegate(s_g)  
+gen.send('Some')
+
+```
 #### Корутины
 ```py
 # вывести состояние генератора
 from inspect import getgeneratorstate  
 getgeneratorstate(generator)
 #__________________________________________________________________________
-
-def average():  				# среднее арифметическое
+					    # 'starter' для генератора  
+def coroutine(func):
+	def inner(*args, **kwargs):  
+        g = func(*args, **kwargs)  
+        g.send(None)    # или next(g)  
+ 		return g  
+	return inner 
+# для старта генератора добавь декоратор 
+# ____________________________________________________________
+ 				# генератор среднего арифметического
+@coroutine # или для инициализации генератора next(gener)
+def average():  				
     count, summ, average = 0, 0, None  
- while 1:  
-        try:  
-            x = yield average  	# отдаёт average, принемает x
-        except StopIteration:  
-            print('Done')  
-        else:  
-            count += 1  
- 			summ += x  
-            average = round(summ/count, 2)  
-  
-  
+	while 1:  
+		try:  
+			x = yield average  	# отдаёт average, принемает x
+
+		except StopIteration:	# для вызова gener.throw(StopIteration)
+			print('Done')  
+			break 				# если использовать return
+		else:  
+			count += 1  
+			summ += x  
+			average = round(summ/count, 2)  
+		return average		# возвращаем последее(накапившееся) значение
+ 
 gener = average()  		# передаём переменной ссылку на генератор average
-next(gener)  			# первый прогон (м заменить на gener.send(None))
+# next(gener)  			# первый прогон (м заменить на gener.send(None))
 print(gener.send(4))  	# 0+4/1 = 4
 print(gener.send(5))	# 4+5/2 = 4.5
-
+# _________________ "отлавливаем" возвращаем последее(накапившееся) значение___
+try:  
+    gener.throw(StopIteration)  
+except StopIteration as e:  
+    print('average', e.value)   # значение average после Exaption
 
 ```
 #### Async На генераторах
