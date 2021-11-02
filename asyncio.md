@@ -161,11 +161,7 @@ taskC: ... Готово!
 Прежде чем переходить к асинхронности попробуем проверить многопоточность на производительность и сравним результаты. Для этого теста будем получать данные по URL с разной частотой: 1, 10, 50, 100 и 500 раз соответственно. После этого сравним производительность обоих подходов.
 
 ### Реализация
-
-Многопоточность:
-
-Копировать
-
+#### Многопоточность:
 ```python
 import requests
 import time
@@ -207,10 +203,7 @@ if __name__=='__main__':
 
 `ProcessPoolExecutor` — это пакет Python, который реализовывает интерфейс `Executor`. `fetch_url_data` — функция для получения данных по URL с помощью библиотеки request. После получения `get_all_url_data` используется, чтобы замапить `function_url_data` на список URL.
 
-Асинхронность:
-
-Копировать
-
+#### Асинхронность:
 ```python
 import asyncio
 import time
@@ -267,5 +260,51 @@ if __name__ == '__main__':
 ### Результаты
 
 Как можно увидеть, асинхронное программирование на порядок эффективнее многопоточности для этой программы.
+
+**`ex`** Молчанов
+```py
+import requests  
+import asyncio  
+import aiohttp  
+from time import time  
+  
+  
+######################### asyncio #################################  
+  
+def write_img(data, filename):  # запись файлов синхронно  
+ # filename = f'{int(time()) * 1000}.jpeg' # print(filename) with open(f'data/{filename}', 'wb') as file:  
+        file.write(data)  
+  
+  
+async def fetch_content(url, session):  
+    async with session.get(url, allow_redirects=True) as resp:  
+        # asyncio.sleep(0.1)  
+ 		data = await resp.read()  
+        name = str(resp.url).split('/')[-1]  
+        # почитай про асинх/поточно запись файлов  
+ 		write_img(data, filename=name)  # запись файлов синхронно в асинх йункции ПЛОХАЯ практика  
+  
+  
+async def main2():  
+    url = 'https://loremflickr.com/320/240'  
+ 	tasks = []  
+  
+    async with aiohttp.ClientSession() as session:  
+        for i in range(10):  
+            task = asyncio.create_task(fetch_content(url, session))  
+            tasks.append(task)  
+        # ждём выполтение тасков  
+ 		await asyncio.wait(tasks) # or # await asyncio.gather(*tasks)  
+  
+if __name__ == '__main__':  
+    # main()  
+ 	t0 = time()  
+  
+    loop = asyncio.get_event_loop()  
+    loop.run_until_complete(main2())  
+    # loop.run_forever()  
+ 	# loop.close()  
+ 	print(time() - t0)
+```
 _____________
 #### Links

@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "EventLoop.md",
-            "mode": "source"
+            "file": "Git.md",
+            "mode": "preview"
           }
         }
       }
@@ -70,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "EventLoop.md",
+                "file": "Git.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -98,7 +98,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "EventLoop.md"
+                "file": "Git.md"
               }
             }
           }
@@ -111,15 +111,15 @@
   },
   "active": "ff9a08387c2f0ed2",
   "lastOpenFiles": [
-    "EventLoop.md",
-    "Функции в Powershell.md",
-    "Asynh Py.md",
-    "Python.md",
-    "asyncio.md",
-    "Сниппеты Python.md",
-    "Sport.md",
-    "Ибутаморен.md",
     "Git.md",
-    "Gitignore.md"
+    "multiprocessing.md",
+    "Python.md",
+    "Asynh Py.md",
+    "asyncio.md",
+    "EventLoop.md",
+    "AIOHTTP.md",
+    "Функции в Powershell.md",
+    "Сниппеты Python.md",
+    "Sport.md"
   ]
 }

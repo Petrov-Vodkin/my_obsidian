@@ -2,9 +2,86 @@
 #tag
 # EventLoop
 #### Asyncio,async/await
+ex1
 ```py
+# import requests  
+import asyncio  
+import aiohttp  
+from time import time  
+  
+######################### asyncio #################################  
+  
+def write_img(data, filename):  # запись файлов синхронно  
+ # filename = f'{int(time()) * 1000}.jpeg' # print(filename) with open(f'data/{filename}', 'wb') as file:  
+        file.write(data)  
+  
+  
+async def fetch_content(url, session):  
+    async with session.get(url, allow_redirects=True) as resp:  
+        # asyncio.sleep(0.1)  
+ 		data = await resp.read()  
+        name = str(resp.url).split('/')[-1]  
+        # почитай про асинх/поточно запись файлов  
+ 		write_img(data, filename=name)  # запись файлов синхронно в асинх йункции ПЛОХАЯ практика  
+  
+  
+async def main2():  
+    url = 'https://loremflickr.com/320/240'  # адрес random img 
+	tasks = []  
+  
+    async with aiohttp.ClientSession() as session:  
+        for i in range(10):  
+            task = asyncio.create_task(fetch_content(url, session))  
+            tasks.append(task)  
+  		# ждём выполтение тасков 
+		await asyncio.wait(tasks) # or # await asyncio.gather(*tasks)
+  
+if __name__ == '__main__':  
+    # main()  
+ 	t0 = time()  
+  
+    loop = asyncio.get_event_loop()  
+    loop.run_until_complete(main2())  
+    # loop.run_forever()  
+ 	# loop.close()  
+ 	print(time() - t0)
 
-
+```
+ex2
+```py
+import asyncio  
+from time import time  
+  
+  
+async def print_nums():  
+    num = 1  
+ while True:  
+        print(num)  
+        num += 1  
+ await asyncio.sleep(0.1)  
+  
+  
+async def print_time():  
+    count = 0  
+ while 1:  
+        if count % 3 == 0:  
+            print(f'{count} seconds have passed')  
+        count += 1  
+ await asyncio.sleep(1)  # или yield from asyncio.sleep(1)  
+  
+  
+async def main():  
+    task1 = asyncio.create_task(print_nums()) # или asyncio.ensure_future()  
+ 	task2 = asyncio.create_task(print_time())  
+  
+  
+if __name__ == '__main__':  
+    loop = asyncio.get_event_loop()  
+    loop.run_until_complete(main())  
+    loop.run_forever()  
+    loop.close()  
+  
+    # asyncio.run(main())
 ```
 #### Корутины_yield_from
 ```py

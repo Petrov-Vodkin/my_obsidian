@@ -1,10 +1,10 @@
 2021-02-04 15:05
 #потоки #процессы #колвопроцессов #многопроцессор [doc_en](https://docs.python.org/3/library/multiprocessing.html)
 # Multiprocessing
-[[AIOHTTP]]
-[документация](https://docs.python.org/3/library/multiprocessing.html)
-[[Паралельный запуск тестов pytest]]
-[[async test patterns for Pytest]]
+[[AIOHTTP]] | [[Паралельный запуск тестов pytest]] | [[async test patterns for Pytest]]
+`start()` 	Метод start() используется для запуска процесса.
+`join() ([timeout])` 	Метод join() используется для блокировки процесса до тех пор, пока не завершится процесс, каким метод join() вызван. Timeout – необязательный аргумент.
+
 ##### Узнать кол-во процессов в системе
 ```python
 from multiprocessing import cpu_count
@@ -133,46 +133,24 @@ if __name__ == '__main__':
 
 Так мы можем запросить результат процесса. В этом суть работы функции **get**. Она пытается получить наши результаты. Обратите внимание на то, что мы также настроили обратный отсчет, на тот случай, если что-нибудь произойдет с вызываемой нами функцией. Мы не хотим, чтобы она была заблокирована. 
 
-### Использование класса Process
-Класс процессов хранит процессы в памяти и распределяет задания среди доступных процессоров, используя планирование FIFO. Когда процесс завершается, он переопределяет и планирует новый процесс для выполнения.
-```python
-import time  
-import multiprocessing  
-    
-def is_prime(n):  
-  
-     if (n<=1):  
-         return 'not a prime number'  
-	 if (n <= 3):  
-			return 'prime number'  
-	 if (n % 2 == 0 or n % 3 == 0):  
-			return 'not a prime number'  
-	 i = 5  
-	 while (i * i <= n):  
-			if (n % i == 0 or n % (i + 2) == 0):  
-				return 'not a prime number'  
-	 i = i + 6  
-	 return 'prime number'  
-  
-def multiprocessing_func(x):  
-    time.sleep(2)  
-    print('{} is {} number'.format(x, is_prime(x)))  
-      if __name__ == '__main__':  
-        starttime = time.time()  
-        processes = []  
-  
-    for i in range(1, 10):  
-        p = multiprocessing.Process(target=multiprocessing_func, args=(i,))  
-        processes.append(p)  
-        p.start()  
-  
-    for process in processes:  
-        process.join()  
-  
-    print()  
-    print('Time taken = {} seconds'.format(time.time() - starttime)))
+### Прокси-объекты
+
+Прокси-объекты называются **`общими объектами`**, которые находятся в другом процессе. Этот объект также называется прокси. У нескольких прокси-объектов может быть похожий референт. Прокси-объект состоит из различных методов, которые используются для вызова соответствующих методов его референта. Ниже приведен пример прокси-объектов.
+
+Пример –
+```py
+from multiprocessing import Manager 
+manager = Manager() 
+l = manager.list([i*i for i in range(10)]) 
+print(l) 		# [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+print(repr(l)) 	# <ListProxy object, typeid 'list' at 0x7f063621ea10>
+print(l[4]) 	# 16
+print(l[2:5]) 	# [4, 9, 16]
+
 ```
-Как мы видим, время, затрачиваемое на вычисления, было сокращено с 18,02 секунды `до 2,12` секунды с использованием класса Process.
+Прокси-объекты можно выбирать, поэтому мы можем передавать их между процессами. Эти объекты также используются для контроля над синхронизацией.
+Источник: https://pythonpip.ru/osnovy/mnogoprotsessornost-python
+
 ### Использование класса Pool
 ```python
 from multiprocessing import Pool  
@@ -187,7 +165,8 @@ if __name__ == '__main__':  # обязательная проверка (без 
 Класс пула планирует выполнение с использованием политики FIFO. Это работает как карта, уменьшает дизайн. Входные данные отображаются с разных процессоров и объединяют выходные данные всех процессоров. После выполнения кода он восстанавливает вывод в виде списка или массива. Он ожидает завершения всех заданий и возвращает результат. Выполняемые процессы помещаются в память, а другие неисполняемые процессы удаляются из памяти.
 ```python
 import time  
-import multiprocessingdef is_prime(n):  
+import multiprocessing
+	def is_prime(n):  
       if (n <= 1) :   
           return 'not a prime number'  
       if (n <= 3) :   
@@ -216,8 +195,7 @@ if __name__ == '__main__':
 ```
 Время, затрачиваемое на вычисления, было сокращено с 18,02 до` 6,07` с использованием класса Pool.
 
-
-
 _____________
 #### Links
 [[Python]]
+https://pythonpip.ru/osnovy/mnogoprotsessornost-python
