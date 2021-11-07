@@ -3,7 +3,51 @@
 # AIOHTTP
 выполнение асинхронных HTTP-запросов
 [En](https://docs.aiohttp.org/en/stable/#welcome-to-aiohttp "Permalink to this headline")_ . _ _ . [Ru](https://pythonist.ru/rukovodstvo-po-sozdaniyu-api-zaprosov-v-python/)
-
+```py
+import requests  
+import asyncio  
+import aiohttp  
+from time import time  
+  
+  
+######################### asyncio #################################  
+  
+def write_img(data, filename):  # запись файлов синхронно  
+ # filename = f'{int(time()) * 1000}.jpeg' # print(filename) with open(f'data/{filename}', 'wb') as file:  
+        file.write(data)  
+  
+  
+async def fetch_content(url, session):  
+    async with session.get(url, allow_redirects=True) as resp:  
+        # asyncio.sleep(0.1)  
+        data = await resp.read()  
+        name = str(resp.url).split('/')[-1]  
+        # почитай про асинх/поточно запись файлов  
+        write_img(data, filename=name)  # запись файлов синхронно в асинх йункции ПЛОХАЯ практика  
+  
+  
+async def main2():  
+    url = 'https://loremflickr.com/320/240'  
+    tasks = []  
+  
+    async with aiohttp.ClientSession() as session:  
+        for i in range(10):  
+            # loremflickr при обращении(гет) отдаёт рандомную картинку
+            task = asyncio.create_task(fetch_content(url, session))  
+            tasks.append(task)  
+        # ждём выполтение тасков  
+        await asyncio.wait(tasks) # or # await asyncio.gather(*tasks)  
+  
+if __name__ == '__main__':  
+    # main()  
+    t0 = time()  
+  
+    loop = asyncio.get_event_loop()  
+    loop.run_until_complete(main2())  
+    # loop.run_forever()  
+    # loop.close()  
+    print(time() - t0)
+```
 ### Getting Started[](https://docs.aiohttp.org/en/latest/index.html#getting-started "Permalink to this headline")
 #### Client example[](https://docs.aiohttp.org/en/latest/index.html#client-example "Permalink to this headline")
 ```py

@@ -2,7 +2,8 @@
 #питон #глобальные #переменные [python](https://www.python.org/)
 # Python
 [[Основы Python]]  | 
-[[Библиотека Python]] | [[multiprocessing]] | [[Asynh Py]]
+[[Библиотека Python]] 
+[[Асинхронность Py]]
 [[Python WEB]]
 [[VenvPy]]
 [[Сниппеты Python]] 

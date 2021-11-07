@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "multiprocessing.md",
+            "file": "Asynh Py.md",
             "mode": "preview"
           }
         }
@@ -70,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "multiprocessing.md",
+                "file": "Asynh Py.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -90,15 +90,15 @@
   },
   "active": "ff9a08387c2f0ed2",
   "lastOpenFiles": [
-    "multiprocessing.md",
-    "Git.md",
-    "Python.md",
     "Asynh Py.md",
+    "Асинхронность Py.md",
+    "Python.md",
+    "multiprocessing.md",
     "asyncio.md",
-    "EventLoop.md",
     "AIOHTTP.md",
-    "Функции в Powershell.md",
-    "Сниппеты Python.md",
-    "Sport.md"
+    "Gitignore.md",
+    "Git.md",
+    "EventLoop.md",
+    "Функции в Powershell.md"
   ]
 }

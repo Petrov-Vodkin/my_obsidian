@@ -1,7 +1,7 @@
 2021-02-04 15:05
-#потоки #процессы #колвопроцессов #многопроцессор [doc_en](https://docs.python.org/3/library/multiprocessing.html)
+[doc_en](https://docs.python.org/3/library/multiprocessing.html)  [doc_ru](https://pythonim.ru/moduli/multiprocessing-python)
 # Multiprocessing
-[[AIOHTTP]] | [[Паралельный запуск тестов pytest]] | [[async test patterns for Pytest]]
+#### [[AIOHTTP]] | [[Паралельный запуск тестов pytest]] | [[async test patterns for Pytest]]
 `start()` 	Метод start() используется для запуска процесса.
 `join() ([timeout])` 	Метод join() используется для блокировки процесса до тех пор, пока не завершится процесс, каким метод join() вызван. Timeout – необязательный аргумент.
 
