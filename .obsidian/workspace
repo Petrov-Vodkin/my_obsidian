@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Asynh Py.md",
+            "file": "Git.md",
             "mode": "preview"
           }
         }
@@ -70,7 +70,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Asynh Py.md",
+                "file": "Git.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -90,14 +90,14 @@
   },
   "active": "ff9a08387c2f0ed2",
   "lastOpenFiles": [
-    "Asynh Py.md",
+    "Git.md",
     "Асинхронность Py.md",
+    "Asynh Py.md",
     "Python.md",
     "multiprocessing.md",
     "asyncio.md",
     "AIOHTTP.md",
     "Gitignore.md",
-    "Git.md",
     "EventLoop.md",
     "Функции в Powershell.md"
   ]
