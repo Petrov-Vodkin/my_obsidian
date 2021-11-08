@@ -1,5 +1,5 @@
 2021-01-09 16:25
-#gitignore 
+[doc_ru](https://routerus.com/gitignore-ignoring-files-in-git/)
 # Gitignore
 
 #### Пример .gitignore файла
