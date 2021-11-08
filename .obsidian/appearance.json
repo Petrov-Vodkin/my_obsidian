@@ -1,0 +1,9 @@
+{
+  "theme": "obsidian",
+  "translucency": false,
+  "cssTheme": "Obsdn-Dark-Rmx",
+  "baseFontSize": 14,
+  "enabledCssSnippets": [
+    "Obsdn-Dark-Rmx"
+  ]
+}
