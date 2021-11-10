@@ -8,7 +8,8 @@
 
 [[Hash Py]]
 
-[[Типы данных]] | [[Mutable Immutable]] | [[Set Py]] | [[Dict Py]] | [[Str Py]]
+[[Типы данных]] | [[Mutable Immutable]] | 
+[[Set Py]] | [[Dict Py]] | [[Str Py]] | [[List Py]]
 
 [[Основы управления памятью в Python]]
 Метаклассы магические методы

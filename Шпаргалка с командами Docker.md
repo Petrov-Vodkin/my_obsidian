@@ -1,291 +1,91 @@
 2021-08-05 15:33
 #tag
 # Шпаргалка с командами Docker
-## Установка
+### Установка
+```bash
 ### Linux
-```
 curl -sSL https://get.docker.com/ | sh
-```
-### Mac
-Скачайте dmg по этой ссылке:  
-```
-https://download.docker.com/mac/stable/Docker.dmg
-```
 ### Windows
 Используйте MSI-инсталлятор:  
-```
 https://download.docker.com/win/stable/InstallDocker.msi
 ```
-## Реестры и репозитории Docker
+### Реестры и репозитории Docker
+```bash
 ### Вход в реестр
-```
 docker login
 docker login localhost:8080
-```
 ### Выход из реестра
-```
 docker logout
 docker logout localhost:8080
-```
 ### Поиск образа
-```
 docker search nginx
 docker search nginx -- filter stars=3 --no-trunc busybox
-```
 ### Pull (выгрузка из реестра) образа
-```
 docker pull nginx
 docker pull eon01/nginx localhost:5000/myadmin/nginx
-```
 ### Push (загрузка в реестр) образа
-```
 docker push eon01/nginx
 docker push eon01/nginx localhost:5000/myadmin/nginx
 ```
-
-## Первые действия с контейнерами
-
-  
-
+### Первые действия с контейнерами
+```bash
 ### Создание контейнера
-
-  
-
-```
 docker create -t -i eon01/infinite --name infinite
-```
-
-  
-
 ### Первый запуск контейнера
-
-  
-
-```
 docker run -it --name infinite -d eon01/infinite
-```
-
-  
-
 ### Переименование контейнера
-
-  
-
-```
 docker rename infinite infinity
-```
-
-  
-
 ### Удаление контейнера
-
-  
-
-```
 docker rm infinite
-```
-
-  
-
 ### Обновление контейнера
-
-  
-
-```
 docker update --cpu-shares 512 -m 300M infinite
 ```
-
-  
-
 ## Запуск и остановка контейнеров
-
-  
-
+```bash
 ### Запуск остановленного контейнера
-
-  
-
-```
 docker start nginx
-```
-
-  
-
 ### Остановка
-
-  
-
-```
 docker stop nginx
-```
-
-  
-
 ### Перезагрузка
-
-  
-
-```
 docker restart nginx
-```
-
-  
-
 ### Пауза (приостановка всех процессов контейнера)
-
-  
-
-```
 docker pause nginx
-```
-
-  
-
 ### Снятие паузы
-
-  
-
-```
 docker unpause nginx
-```
-
-  
-
 ### Блокировка (до остановки контейнера)
-
-  
-
-```
 docker wait nginx
-```
-
-  
-
 ### Отправка SIGKILL (завершающего сигнала)
-
-  
-
-```
 docker kill nginx
-```
-
-  
-
 ### Отправка другого сигнала
-
-  
-
-```
 docker kill -s HUP nginx
-```
-
-  
-
 ### Подключение к существующему контейнеру
-
-  
-
-```
 docker attach nginx
 ```
-
-  
-
 ## Получение информации о контейнерах
-
-  
-
+```bash
 ### Работающие контейнеры
-
-  
-
-```
 docker ps
-```
-
-  
-
-```
 docker ps -a
-```
-
-  
-
 ### Логи контейнера
-
-  
-
-```
 docker logs infinite
-```
-
-  
-
 ### Информация о контейнере
-
-  
-
-```
 docker inspect infinite
-```
-
-  
-
-```
 docker inspect --format '{{ .NetworkSettings.IPAddress }}' $(docker ps -q)
-```
-
-  
-
 ### События контейнера
-
-  
-
-```
 docker events infinite
-```
-
-  
-
 ### Публичные порты
-
-  
-
-```
 docker port infinite
-```
-
-  
-
 ### Выполняющиеся процессы
-
-  
-
-```
 docker top infinite
 ```
-
-  
-
 ### Использование ресурсов
-
-  
-
-```
+```bash
 docker stats infinite
 ```
-
-  
-
 ### Изменения в файлах или директориях файловой системы контейнера
-
-  
-
 ```
 docker diff infinite
 ```
-
-  
 
 ## Управление образами
 
