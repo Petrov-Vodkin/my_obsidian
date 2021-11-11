@@ -29,3 +29,6 @@ _____________
 
 [QA bible](https://github.com/VladislavEremeev/QA_bible 'это почти 300 страниц обновляемой смеси ответов на вопросы с реальных собеседований на QA')
 [CI/CD habr](https://habr.com/ru/company/otus/blog/515078/)
+
+[Интеграция джуна в проект](https://qahacking.ru/blog/intergatsiya-dzhuna-v-proekt)
+[Список видеолекций, курсов и ресурсов для автотестировщика](https://qahacking.ru/kursy)
