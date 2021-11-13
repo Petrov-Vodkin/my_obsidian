@@ -87,7 +87,35 @@ Traceback (most recent call last):
  File "<string>", line 1, in <fragment>
 AttributeError: can't set attribute
 ```
+### Decorate class 
+```py
+from typing import Type
 
+
+def auto_str(c: Type):
+  def str(self):
+    variables = [f"{k}={v}" for k, v in vars(self).items()]
+    return f"{c.__name__}({', '.join(variables)})"
+  c.__str__ = str
+
+  return c
+
+
+class Sample1:
+  def __init__(self, a, b):
+    self.a = a
+    self.b = b
+
+
+@auto_str
+class Sample2(Sample1):
+  def __init__(self, a, b, c):
+    super().__init__(a, b)
+    self.c = c
+
+
+print(str(Sample2(1, 2, 3)))
+```
 #### Links
 [[Python]] | [[Fixtures]]
 

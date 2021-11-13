@@ -53,3 +53,4 @@ ____________________________
 #### Links
  [[Python]] 
  [Топ-100 самых популярных пакетов в PyPI](https://pythonist.ru/top-100-samyh-populyarnyh-paketov-v-pypi/)
+ [simple-crypt](https://stackoverflow.com/questions/57065396/installing-python-simple-crypt-on-windows10#62556401) python pip3 install pycryptodome & pip3 install simple-crypt --no-dependencies

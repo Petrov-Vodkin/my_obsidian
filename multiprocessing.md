@@ -102,6 +102,33 @@ if __name__ == '__main__':
 
 Так мы можем запросить результат процесса. В этом суть работы функции **get**. Она пытается получить наши результаты. Обратите внимание на то, что мы также настроили обратный отсчет, на тот случай, если что-нибудь произойдет с вызываемой нами функцией. Мы не хотим, чтобы она была заблокирована. 
 
+**Общая память**
+
+Данные могут храниться в отображении общей памяти с использованием [`Value`](https://digitology.tech/docs/python_3/library/multiprocessing.html#multiprocessing.Value "multiprocessing.Value") или [`Array`](https://digitology.tech/docs/python_3/library/multiprocessing.html#multiprocessing.Array "multiprocessing.Array"). Например, следующий код
+```py
+from multiprocessing import Process, Value, Array
+
+def f(n, a):
+    n.value = 3.1415927
+    for i in range(len(a)):
+        a[i] = -a[i]
+
+if __name__ == '__main__':
+    num = Value('d', 0.0)
+    arr = Array('i', range(10))
+
+    p = Process(target=f, args=(num, arr))
+    p.start()
+    p.join()
+
+    print(num.value)	# 3.1415927
+    print(arr[:])		# [0, -1, -2, -3, -4, -5, -6, -7, -8, -9]
+
+```
+Аргументы `'d'` и `'i'`, используемые при создании `num` и `arr`, являются кодами типа того типа, который используется модулем [`array`](https://digitology.tech/docs/python_3/library/array.html#module-array "array: Пространственно-эффективные массивы типизированных числовых значений."): `'d'` указывает на число с плавающей запятой двойной точности, а `'i'` указывает на целое число со знаком. Эти общие объекты будут технологическими и поточно-ориентированными.
+
+Для большей гибкости в использовании разделяемой памяти можно использовать модуль [`multiprocessing.sharedctypes`](https://digitology.tech/docs/python_3/library/multiprocessing.html#module-multiprocessing.sharedctypes "multiprocessing.sharedctypes: Аллоцировать объекты ctypes из общей памяти."), который поддерживает создание произвольных объектов ctypes, выделенных из разделяемой памяти
+
 ### Прокси-объекты
 
 Прокси-объекты называются **`общими объектами`**, которые находятся в другом процессе. Этот объект также называется прокси. У нескольких прокси-объектов может быть похожий референт. Прокси-объект состоит из различных методов, которые используются для вызова соответствующих методов его референта. Ниже приведен пример прокси-объектов.
@@ -123,3 +150,4 @@ _____________
 #### Links
 [[Python]]
 https://pythonpip.ru/osnovy/mnogoprotsessornost-python
+https://digitology.tech/docs/python_3/library/multiprocessing.html

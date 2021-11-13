@@ -2,6 +2,7 @@
 #snippets
 # Сниппеты 
 #### [[Трюки в Python]]
+[[#Date time]]
 #### File
 ```py
 # Проверка существования файла: Метод перебора
@@ -46,6 +47,7 @@ for a in articles:
 # безконечность
 infinity = float("inf")
 ```
+### Date & time
 #### Вычисление `времени` выполнения в оболочке 
 [[Decorators]]
 ```py
@@ -81,7 +83,21 @@ code = '''
 '''
 print(timeit.timeit(stmy = code,number = 1000))
 ```
-####  Калькулятор без if-else / 
+#### Дата `-` `+` дни
+```py
+# принимает дату в строковом формате - возвращать дату на неделю позже
+from datetime import datetime, timedelta
+# datetime.date для хранения даты; datetime.timedelta прибавления дней к дате
+def week_after(d):
+    date = datetime.strptime(d,'%d/%m/%Y') + timedelta(days=7)
+    return date.strftime('%d/%m/%Y')
+# d.year, d.month, d.day 				# выводит как числа, без ведущих нулей
+# ny_2011 = datetime.date(2011, 2, 1)	# создали дату: 1 февраля 2011 года
+# delta = datetime.timedelta(days=2) 	# дельта в 2 дня  
+# now_date = now_date + delta 			# + 2 дня в формате (yyyy-mm-dd)  
+# now_date = now_date - delta 			# - 2 дня назад в формате (yyyy-mm-dd)
+```
+###  Калькулятор без if-else / 
 ```py
 import operator
 
@@ -95,7 +111,7 @@ action = {
 
 print(action['*'](5, 5))    # 25
 ```
-#### `try`, `except` и `finally`:
+### `try`, `except` и `finally`:
 ```py
 # Пример 2
 try:    

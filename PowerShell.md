@@ -106,8 +106,6 @@ rundll32.exe user32.dll, UpdatePerUserSystemParameters 1, True
 ```
 
 Сохраните код скрипта в файл _Get-UnsplashWallpaper.ps1_ и запустите. После завершения работы скрипта в качестве обоев будет установлено случайное изображение из [курируемой коллекции обоев](https://unsplash.com/wallpaper/1065396/desktop-wallpapers) для рабочего стола Unsplash.
-
->>>>>>> w_pc
 ### Help
 ```bash
 Save-Help					# загрузка файлов справки из Интернета и сохранение их в общей папке.

@@ -10,12 +10,14 @@ print('Текущее время : ', dt_string)
 # Текущее время :  14-Nov-2020 (17:18:09.890960)
 ```
 ```python
-import datetime
+# прибавить дни к дате
+from datetime import datetime, timedelta
 
-dt_obj =datetime.datetime.now()
-dt_string = dt_obj.strftime("%H:%M:%S.%f - %b %d %Y")
-print('Текущее время : ', dt_string)
-# Текущее время :  17:20:28.841390 - Nov 14 2020
+a = '2020-12-12'
+dt = datetime.strptime(a, '%Y-%m-%d') 
+result = dt + timedelta(days=1)
+print(result.strftime('%Y-%m-%d'))	# 2000-12-13
+print(result.strftime('%Y %m %d'))	# 2000 12 13
 ```
 ```py
 %a	# День недели, короткий вариант				Wed
