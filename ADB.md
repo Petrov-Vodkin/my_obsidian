@@ -6,8 +6,8 @@
 | [Adb Kit](http://adbshell.com/downloads) | [драйверы ADB](http://adbdriver.com/downloads) | Добавить папку c adb в переменную Path
 С ADB можно работать через [WiFi ADB](https://play.google.com/store/apps/details?id=com.ttxapps.wifiadb)
 ```powershell
-adb devices				# список подключенных устройств
-adb connect IP-адрес	# 
+adb devices			# список подключенных устройств
+adb connect ip:port	# ответ: EX connected to 192.168.1.10:5555
 						"install/uninstall apk"
 adb install d:/downloads/имя_файла.apk # установка приложений без копирования их на смартфон
 adb uninstall com.rovio.angrybirdsseasons # удалить, нужно название пакета
@@ -27,15 +27,13 @@ pm uninstall 							# uninstall
 Для использования activity manager понадобятся более глубокие знания структуры Android + whatis [Avtivity](http://developer.android.com/intl/ru/reference/android/app/Activity.html) и [Intent](http://developer.android.com/intl/ru/tools/help/shell.html#IntentSpec).
 ```bash
 				"Управление приложениями am(activity manager)"
-am start -n com.android.browser/.BrowserActivity # запуск
-am start -n com.android.settings/.Settings
-Завершить работу приложения можно противоположной командой:
-am kill com.android.browser
-Ну а убить все запущенные приложения — такой командой:
-am kill-all
-Тот же activity manager поможет сделать звонок на нужный номер телефона:
+am start -n com.android.browser/.BrowserActivity# запуск
+am start -n com.android.settings/.Settings		# запуск
+am kill com.android.browser # завершить работу приложения 
+am kill-all					# убить все запущенные приложения — такой командой:
+							# сделать звонок на нужный номер телефона
 am start -a android.intent.action.CALL tel:123
-А так можно открыть страницу в браузере:
+							# открыть страницу в браузере:
 am start -a android.intent.action.VIEW 'http:/xakep.ru'
 							"Бэкап приложений"
 adb backup [опции] <приложения>
