@@ -3,6 +3,17 @@
 # Сниппеты 
 #### [[Трюки в Python]]
 [[#Date time]]
+#### Тернарный оператор
+```py
+# ex1
+x, y = 25, 50
+big = x if x < y else y
+
+# ex2
+for item in x:
+    print('OK =>', item) if item.endswith(suffix) else print('NO =>', item)
+
+```
 #### File
 ```py
 # Проверка существования файла: Метод перебора
@@ -14,6 +25,20 @@ def check_for_file():
 
 if __name__=="__main__":
    check_for_file()
+```
+```py
+				# запись слов вфаил с новой строки "\n"
+f = open("test1.txt", "w")  
+lines = ["Line 1", "Line 2", "Line 3"]  
+contents = "\n".join(lines)  
+f.write(contents)  
+f.close()
+```
+```py
+					# Рекурсивный обход дтректорий
+for current_dir, dirs, files in os.walk("."):  
+    print(current_dir, dirs, files)
+
 ```
 #### Объекты / Переменные
 ```py
@@ -144,9 +169,9 @@ sorted_list = sorted(list1) # Метод 2: sorted()
 ### Генератор списков с If и Else
 ```py
 ## List Comprehension with if and else
-["Divided by 5" if i%5=0 else i for i in range(1,20)]
+["Divided by 5" if i%5==0 else i for i in range(1,20)]
 ### FizzBuzz Implementation Threw the same
-['FizzBuzz' if i%3=0 and i%5=0 else 'Fizz' if i%3=0 else 'Buzz' if i%5=0 else i for i in range(1,20)]
+['FizzBuzz' if i%3==0 and i%=5=0 else 'Fizz' if i%3==0 else 'Buzz' if i%5==0 else i for i in range(1,20)]
 ```
 ####  Сложение элементов двух списков
 ```py
@@ -228,6 +253,28 @@ def gen_filename():
         t = int(time()) * 1000  
 		yield f'{t}.jpeg'
 		# можно ещё добавить код или ещё yield
+```
+### Числа
+[link](https://pythonist.ru/proverka-chisla-na-prostotu/)
+```py
+			# V1 Проверка: ПРОСТОЕ ЧИСЛО
+a = int(input("Введите число: "))
+k = 0
+for i in range(2, a // 2+1):
+    if (a % i == 0):
+        k = k+1
+if (k <= 0):
+    print("Число простое")
+else:
+    print("Число не является простым")
+
+			# V2 Проверка: ПРОСТОЕ ЧИСЛО по теореме Вильсона
+def primes():
+    i, f = 2, 1  # число и факториал предыдущего числа
+    while True:
+        if (f + 1) % i == 0:  # проверяем на простоту по теореме Вильсона через факториал
+            yield i
+        f, i = f * i, i + 1  # сначала пересчитываем факториал для текущего числа, затем увеличиваем число
 ```
 _____________
 #### Links

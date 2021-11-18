@@ -20,11 +20,7 @@ Solid dry Kiss
 
 #### [Global Interpreter Lock](https://ru.wikipedia.org/wiki/Global_Interpreter_Lock).
 Глобальный блокировщик `GIL` следит за тем, чтобы активен был всегда `только один поток`
-#### Тернарный оператор
-```py
-x, y = 25, 50
-big = x if x < y else y
-```
+
 #### [[Testing]] / Тестирование / [[PyTest]]
 В Python есть стандартный модуль [unittest](https://docs.python.org/3/library/unittest.html). Он позволяет объединять тесты в группы, настраивать и автоматизировать их. Дополнение [Mock](https://pypi.python.org/pypi/mock) дает возможность использовать mock-объекты, что облегчает тестирование. 
 ### Отладка

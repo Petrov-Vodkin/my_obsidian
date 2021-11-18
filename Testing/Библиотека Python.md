@@ -30,20 +30,28 @@
 [[SQL]] | [[sqlite3]] | [[Pandas]] | [[psycopg2]] - postgress | 
 [[mysqlclient]] - MySQL | [[SQLAlchemy]] - [[ORM]](`работа с большим количеством баз данных`)
 [[cx_Oracle]] - oracle
-
+________________________________________
 ### DEFOLT
 ---__[[multiprocessing]]__---
-[os](https://egorovegor.ru/python-os-module/)
-[pathlib](https://t.me/c/1400358557/65)  - Работаем с файловыми путями
+#### File
+[[os]] [](https://egorovegor.ru/python-os-module/)
+[[pathlib]] [](https://t.me/c/1400358557/65)  - Работаем с файловыми путями
+[[shutil]]	-работа с файлами(cp, rm, .....)
 [[pickle]] принимает `любой объект` Python, преобразует его в str & `сохраняет в файл`
+[[zipfile_py]]
+______________________________
+[[subprocess]] - апустить команду/программу с аргументами из кода py
 
 [[sqlite3]]
 
 [[datetime]]
+
 [[itertools]] (extend) расширение списка с помощью итераторов
+[operator](https://docs-python.ru/standart-library/modul-operator-python/) - кспортирует набор эффективных функций, которые соответствуют внутренним операторам Python
+[contextlib](https://docs-python.ru/standart-library/modul-contextlib-python/)- создания менеджеров контекста
+[[functool]] - # инструменты расширения функций
 
 [dataclasses](https://t.me/c/1400358557/64) - класс, с реализованными методами init, repr, str и eq
-[contextlib](https://docs-python.ru/standart-library/modul-contextlib-python/)- создания менеджеров контекста
 
 #### Отладка
 [`tracemalloc`](https://docs-python.ru/standart-library/modul-tracemalloc-python/ "Модуль tracemalloc в Python, отслеживание блоков памяти.") - это отладочный инструмент для отслеживания блоков памяти, выделенных программе на Python.
