@@ -47,7 +47,15 @@ import sys
 a = 20
 print(sys.getsizeof(a)) #28
 ```
+#### Input Output
+```py
+		# Считать все строки по одной из стандартного потока ввода
+import sys
 
+for line in sys.stdin:
+    line = line.rstrip()
+    # process line
+```
 ```py
 			## Прием двух целых чисел в качестве входных данных
 a,b = map(int,input().split())

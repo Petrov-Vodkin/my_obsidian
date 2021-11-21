@@ -51,6 +51,8 @@ ______________________________
 [contextlib](https://docs-python.ru/standart-library/modul-contextlib-python/)- создания менеджеров контекста
 [[functool]] - # инструменты расширения функций
 
+[[Регулярные выражения py]]
+
 [dataclasses](https://t.me/c/1400358557/64) - класс, с реализованными методами init, repr, str и eq
 
 #### Отладка
