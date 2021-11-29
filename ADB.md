@@ -61,3 +61,4 @@ _____________
 #### Links
 [[Droid]] | [[Инструменты для тестировщика]]
 [50 команд ADB](https://xakep.ru/2016/05/12/android-adb/ "управлепие приложениями, бэкап, скрин && видео, логи")
+[Apply Update From ADB](https://androfon.ru/prodvinut/chto-takoe-apply-update-from-adb)

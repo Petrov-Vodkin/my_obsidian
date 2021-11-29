@@ -90,54 +90,39 @@ tchall():
    каждого столбца возвращаются следующие данные:(name, type_code,
    display_size, internal_size, precision, scale, null_ok). Далее следует
    форматированный вывод на stdout( почти как printf в языке C).
-
-        print
-        print 'Database:',my_connection.tnsentry
-        print
-        print "Used space by owner, object type, tablespace "
-        print "----------------------------------------------------------------------------------"
-        title_mask=('%-16s','%-16s','%-16s','%-8s','%-8s')
-        i=0
-        for column_description in my_cursor.description:
-            print title_mask[i]%column_description[0],
-            i=1+i
-        print ''
-        print "----------------------------------------------------------------------------------"
-        row_mask='%-16s %-16s %-16s %8.0f %8.0f '
-        for record in my_cursor.fetchall():
-            print row_mask%record
-
+```py
+print
+print 'Database:',my_connection.tnsentry
+print
+print "Used space by owner, object type, tablespace "
+print "----------------------------------------------------------------------------------"
+title_mask=('%-16s','%-16s','%-16s','%-8s','%-8s')
+i=0
+for column_description in my_cursor.description:
+    print title_mask[i]%column_description[0],
+    i=1+i
+print ''
+print "----------------------------------------------------------------------------------"
+row_mask='%-16s %-16s %-16s %8.0f %8.0f '
+for record in my_cursor.fetchall():
+    print row_mask%record
+```
    В результате мы увидим что-то вроде:
-
-        Database: testdb
-        Used space by owner, object type, tablespace
-        --------------------------------------------------------------------------------
-        OWNER            SEGMENT_TYPE     TABLESPACE_NAME  SIZE_BLOCKS SIZE_EXTENTS
-        --------------------------------------------------------------------------------
-        ADU2             INDEX            USERS                 784       25
-        ADU2             TABLE            USERS                 512       24
-        ADUGKS           INDEX            DEVELOP_DATA          984      123
-        ADUGKS           TABLE            DEVELOP_DATA          664       83
-        ADUGPA           INDEX            USERS                 784       25
-        ADUGPA           TABLE            USERS                 496       23
-        AGNKS_SG         INDEX            USERS                 352       22
-        AGNKS_SG         TABLE            USERS                 240       15
-        ATU              INDEX            USERS                3968      244
-        ATU              TABLE            DEVELOP_DATA            8        1
-        ATU              TABLE            USERS                2688      160
-        ATU1             INDEX            DEVELOP_DATA         1600      200
-        ATU1             INDEX            USERS                 608       38
-        ATU1             TABLE            DEVELOP_DATA         1032      129
-        ATU1             TABLE            USERS                 544       34
-        BUX              INDEX            DEVELOP_DATA           64        8
-        BUX              TABLE            DEVELOP_DATA         1736      217
-        DISP             INDEX            USERS                 400       25
-        DISP             TABLE            USERS                 528       33
-        EPE              INDEX            USERS                  80        5
-        EPE              TABLE            USERS                  48        3
-        EXZ              INDEX            USERS                1088       61
-        EXZ              TABLE            DEVELOP_DATA            8        1
-        EXZ              TABLE            USERS                 832       41
+```py
+Database: testdb
+Used space by owner, object type, tablespace
+--------------------------------------------------------------------------------
+OWNER            SEGMENT_TYPE     TABLESPACE_NAME  SIZE_BLOCKS SIZE_EXTENTS
+--------------------------------------------------------------------------------
+ADU2             INDEX            USERS                 784       25
+ADU2             TABLE            USERS                 512       24
+ADUGKS           INDEX            DEVELOP_DATA          984      123
+ADUGKS           TABLE            DEVELOP_DATA          664       83
+ADUGPA           INDEX            USERS                 784       25
+ADUGPA           TABLE            USERS                 496       23
+AGNKS_SG         INDEX            USERS                 352       22
+AGNKS_SG         TABLE            USERS                 240       15
+```  
 
 
 Часть II. Запросы с параметрами.
@@ -167,84 +152,73 @@ cursor2.execute("select *  from all_users where USERNAME LIKE :S ",{':S':'S%'})
 Часть III. Анонимные блоки PL/SQL
 ---------------------------------
 
-   Несмотря на существавания стандартов на язык SQL, реальные потребности
-   администратора часто требуют использования нестандартных средств
-   сервера(более того, написать приложение, работающее с сервером на
-   стандартном SQL возможно только для весьма тривиальных приложений ),
-   для Oracle таким нестандартным, но очень удобным механизмом является
-   возможность исполнения анонимных блоков PL/SQL. Модуль сx_Oracle
-   реализует этот механизм, который естественно не описан в спецификации
-   Python Database API 2.0 .
+Несмотря на существавания стандартов на язык SQL, реальные потребности
+администратора часто требуют использования нестандартных средств
+сервера(более того, написать приложение, работающее с сервером на
+стандартном SQL возможно только для весьма тривиальных приложений ),
+для Oracle таким нестандартным, но очень удобным механизмом является
+возможность исполнения анонимных блоков PL/SQL. Модуль сx_Oracle
+реализует этот механизм, который естественно не описан в спецификации
+Python Database API 2.0 .
 
-   Чтобы связать переменные блока PL/SQL c переменными языка PYTHON, в
-   модуле сx_Oracle реализован класс var.Эекземпляр можно создать
-   следующим образом:
+Чтобы связать переменные блока PL/SQL c переменными языка PYTHON, в
+модуле сx_Oracle реализован класс var.Эекземпляр можно создать
+следующим образом:
 
-        var=my_cursor.var(cx_Oracle.DATETIME)
+     var=my_cursor.var(cx_Oracle.DATETIME)
 
-   Конструктор my_cursor.var(...) в качестве параметра требует указать
-   тип создаваемой переменной. Варианты:
-     * BINARY
-     * DATETIME
-     * FIXEDCHAR
-     * LONGBINARY
-     * LONGSTRING
-     * NUMBER
-     * ROWID
-     * STRING
+Конструктор my_cursor.var(...) в качестве параметра требует указать
+тип создаваемой переменной. Варианты: * `BINARY` * `DATETIME`* `FIXEDCHAR` * `LONGBINARY` * `LONGSTRING` * `NUMBER` * `ROWID` * `STRING`
 
-        var=my_cursor.var(cx_Oracle.DATETIME)
-        try:
-            my_cursor.execute("""begin
-            SELECT SYSDATE INTO :p_Value from dual;
-            end;""",p_Value = var)
+```py
+var=my_cursor.var(cx_Oracle.DATETIME)
+try:
+    my_cursor.execute("""begin
+    SELECT SYSDATE INTO :p_Value from dual;
+    end;""",p_Value = var)
 
-        except cx_Oracle.DatabaseError,info:
-            print "SQL Error:",info
-            exit(0)
-
-   Очевидно, что теперь var содержит текущее время сервера.Доступ к
-   значениям переменной выполняется с помощью метода var.getvalue():
-
-        CDATE=var.getvalue()
-        print 'Date: %02u/%02u/%4u'%(CDATE.day,CDATE.month,CDATE.year)
-        print 'Time: %02u:%02u:%02u'%(CDATE.hour,CDATE.minute,CDATE.second)
-
-   Этот пример демонстрирует также и форматирование даты и времени для
-   экземпляра var. В результате напечатается нечто вроде:
-
-        Date: 12/05/2003
-        Time: 16:42:54
-
-   Всвязи с тем, что работа с типами времени и даты внутри сервера Oracle
-   реализованы особенным образом ( независимо от ОС), модуль сx_Oracle
-   реализует следующие функции для для преобразования значений дат и
-   времени :
-     * Date( year, month, day)
-     * DateFromTicks( ticks)
-     * Time( hour, minute, second)
-     * TimeFromTicks( ticks)
-     * Timestamp( year, month, day, hour, minute, second)
-     * TimestampFromTicks( ticks)
-
-        var=my_cursor.var(cx_Oracle.DATETIME)
-        var.setvalue(0,cx_Oracle.Date( 2002, 02,12))
-        CDATE=var.getvalue()
-        print 'Date: %02u/%02u/%4u'%(CDATE.day,CDATE.month,CDATE.year)
-        print 'Time: %02u:%02u:%02u'%(CDATE.hour,CDATE.minute,CDATE.second)
-
-   Результат будет следующий:
-
-        Date: 12/02/2002
-        Time: 00:00:00
-
+except cx_Oracle.DatabaseError,info:
+    print "SQL Error:",info
+    exit(0)
+```
+Очевидно, что теперь var содержит текущее время сервера.Доступ к
+значениям переменной выполняется с помощью метода var.getvalue():
+```py
+CDATE=var.getvalue()
+print 'Date: %02u/%02u/%4u'%(CDATE.day,CDATE.month,CDATE.year)
+print 'Time: %02u:%02u:%02u'%(CDATE.hour,CDATE.minute,CDATE.second)
+```
+Этот пример демонстрирует также и форматирование даты и времени для
+экземпляра var. В результате напечатается нечто вроде:
+```
+     Date: 12/05/2003
+     Time: 16:42:54
+```
+Всвязи с тем, что работа с типами времени и даты внутри сервера Oracle
+реализованы особенным образом ( независимо от ОС), модуль сx_Oracle
+реализует следующие функции для для преобразования значений дат и
+времени :
+  * Date( year, month, day)
+  * DateFromTicks( ticks)
+  * Time( hour, minute, second)
+  * TimeFromTicks( ticks)
+  * Timestamp( year, month, day, hour, minute, second)
+  * TimestampFromTicks( ticks)
+```py
+     var=my_cursor.var(cx_Oracle.DATETIME)
+     var.setvalue(0,cx_Oracle.Date( 2002, 02,12))
+     CDATE=var.getvalue()
+     print 'Date: %02u/%02u/%4u'%(CDATE.day,CDATE.month,CDATE.year)
+     print 'Time: %02u:%02u:%02u'%(CDATE.hour,CDATE.minute,CDATE.second)
+```
+Результат будет следующий:
+```
+     Date: 12/02/2002
+     Time: 00:00:00
+```
 Ссылки
-
-   cx_Oracle-Python extension module that allows access to Oracle
-   Author: Anthony Tuininga [http://computronix.com/utilities.shtml](http://computronix.com/utilities.shtml)
-
-   Python Database API specification Python
-   [http://www.python.org/topics/database/DatabaseAPI-2.0.html](http://www.python.org/topics/database/DatabaseAPI-2.0.html)
+[http://computronix.com/utilities.shtml](http://computronix.com/utilities.shtml)
+[http://www.python.org/topics/database/DatabaseAPI-2.0.html](http://www.python.org/topics/database/DatabaseAPI-2.0.html)
 
 Листинги
 
@@ -362,5 +336,6 @@ ___________
 https://www.oracletutorial.com/python-oracle/connecting-to-oracle-database-in-python/
 https://www.oracle.com/database/technologies/appdev/python/quickstartpythononprem.html
 https://www.foxinfotech.in/2018/09/cx_oracle-python-tutorials.html
+https://dbaportal.eu/sidekicks/sidekick-cx_oracle-code-paterns/#part1
 
 [[SQL]] [[Библиотека Python]]

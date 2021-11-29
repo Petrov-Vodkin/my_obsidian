@@ -2,6 +2,59 @@
 #tag
 # XML
 -сами определяем теги. Исп-ся для хранения данных. 
+### [xmltodict](https://pythonim.ru/osnovy/preobrazovanie-xml-v-json-i-dict-v-python)
+XML в JSON  
+```py
+import xmltodict
+import pprint
+import json
+
+# V1
+my_xml = """
+    <audience>
+      <id what="attribute">123</id>
+      <name>Shubham</name>
+    </audience>
+"""
+
+pp = pprint.PrettyPrinter(indent=4)
+pp.pprint(json.dumps(xmltodict.parse(my_xml)))
+
+# V2
+
+with open('person.xml') as fd:
+    doc = xmltodict.parse(fd.read())
+
+pp = pprint.PrettyPrinter(indent=4)
+pp.pprint(json.dumps(doc))
+
+# XML in Dict  
+my_dict = xmltodict.parse(my_xml)
+print(my_dict['audience']['id'])
+print(my_dict['audience']['id']['@what'])
+
+# Поддержка пространств имен в XML  - process_namespaces=True
+with open('person.xml') as fd:
+    doc = xmltodict.parse(fd.read(), process_namespaces=True)
+
+```
+#### преобразовать JSON в XML  
+```py
+import xmltodict
+
+student = {
+  "data" : {
+    "name" : "Shubham",
+    "marks" : {
+      "math" : 92,
+      "english" : 99
+    },
+    "id" : "s387hs3"
+  }
+}
+print(xmltodict.unparse(student, pretty=True))
+```
+----------------------------------------
 ### ElementTree
 ```py
 import xml.etree.ElementTree as ET‭
