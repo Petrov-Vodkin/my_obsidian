@@ -1,9 +1,13 @@
 2021-02-04 13:47
 #snippets
 # Сниппеты 
-#### [[Трюки в Python]]
-[[#Date time]]
-#### Тернарный оператор
+[[Трюки в Python]]	|	[[itertools]]
+[[#Тернарный оператор]]
+[[#File Dir]] | [[#Объекты Переменные]] | [[#Input Output]]
+[[#Web Net]] | [[#Date time]] | [[#Калькулятор без if-else]]
+[[#try except и finally]] | [[#Списки]] | [[#Сортировка списка строкске]] 
+[[#Генератор списков с If и Else]] | [[#Словари]]  | [[#Строки]] | [[#Генераторы]] | [[#Числа]]
+### Тернарный оператор
 ```py
 # ex1
 x, y = 25, 50
@@ -14,7 +18,13 @@ for item in x:
     print('OK =>', item) if item.endswith(suffix) else print('NO =>', item)
 
 ```
-#### File
+### File & Dir
+Файловые объекты в Python **реализованы как итераторы**
+```py
+					# вывести только первую строку from file
+first_line = next(open('giant_log_file.txt'))
+print(first_line) # Вывод: Это первая строка из гигантского файла
+```
 ```py
 # Проверка существования файла: Метод перебора
 import os.path
@@ -27,6 +37,12 @@ if __name__=="__main__":
    check_for_file()
 ```
 ```py
+					# Рекурсивный обход дтректорий
+for current_dir, dirs, files in os.walk("."):  
+    print(current_dir, dirs, files)
+
+```
+```py
 				# запись слов вфаил с новой строки "\n"
 f = open("test1.txt", "w")  
 lines = ["Line 1", "Line 2", "Line 3"]  
@@ -35,10 +51,8 @@ f.write(contents)
 f.close()
 ```
 ```py
-					# Рекурсивный обход дтректорий
-for current_dir, dirs, files in os.walk("."):  
-    print(current_dir, dirs, files)
-
+			# Однострочное решение для построчного чтения файла
+print([line.strip() for line in open("readFile.py")])
 ```
 #### Объекты / Переменные
 ```py
@@ -217,6 +231,16 @@ from random import shuffle
 list_example = [1,2,3,4,5,6,7,8]
 shuffle(list_example)
 ```
+```py
+			# Однострочное решение для замены всех испорченных строк
+# на строки, которые ПЕРЕДШЕСТВУЮТ им в списке
+## Данные
+visitors = ['Firefox', 'corrupted', 'Chrome', 'corrupted',
+'Safari', 'corrupted', 'Safari', 'corrupted',
+'Chrome', 'corrupted', 'Firefox', 'corrupted']
+## Однострочник
+visitors[1::2] = visitors[::2]
+```
 ### Словари
 #### Сортировка списка словарей
 ```py
@@ -231,6 +255,17 @@ dict1.sort(key=f)
 dict1 = sorted(dict1, key=lambda item: item.get("Age"))
 ```
 В Python 3 версии оператор `/=` выполнит вещественное деление (т.е. вернется результат с точкой), а оператор `//` целочисленное.
+#### [list comprehension](https://PythonRu.com/osnovy/python-list-comprehension) + any
+```py
+		# поиска компаний, платящих меньше $9
+## Данные
+companies = {
+'CoolCompany' : {'Alice' : 33, 'Bob' : 28, 'Frank' : 29},
+'CheapCompany' : {'Ann' : 4, 'Lee' : 9, 'Chrisi' : 7},
+'SosoCompany' : {'Esther' : 38, 'Cole' : 8, 'Paris' : 18}}
+## Однострочник
+illegal = [x for x in companies if any(y<9 for y in companies[x].values())]
+```
 
 ### Строки
 **Удалить пробелы из строки (string) “aaa bbb ccc ddd eee”?**
@@ -283,6 +318,11 @@ def primes():
         if (f + 1) % i == 0:  # проверяем на простоту по теореме Вильсона через факториал
             yield i
         f, i = f * i, i + 1  # сначала пересчитываем факториал для текущего числа, затем увеличиваем число
+```
+
+### lambda
+```py
+lambda x, y: x + y	# У данной лямбда-функции два аргумента, xи y. Возвращаемое значение представляет собой просто их сумму, то есть x + y.
 ```
 _____________
 #### Links
