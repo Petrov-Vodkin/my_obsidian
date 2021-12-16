@@ -53,7 +53,7 @@ print(x)  					# 13
 
 Декоратор `@update_wrapper()` модуля `functools` обновляет функцию-обертку, чтобы она выглядела как исходная функция. Другими словами дополняет декоратор, данными из некоторых атрибутов оборачиваемой функции.
 
-##### [Декоратор @wraps() модуля functools в Python.](https://docs-python.ru/standart-library/modul-functools-python/dekorator-wraps-modulja-functools/ "Заменить атрибуты декоратора на атрибуты исходной функции в Python.")
+##### [[@wraps() ]] [модуля functools в Python.](https://docs-python.ru/standart-library/modul-functools-python/dekorator-wraps-modulja-functools/ "Заменить атрибуты декоратора на атрибуты исходной функции в Python.")
 
 Декоратор `@wraps()` модуля `functools` это удобная функция для вызова `@functools.update_wrapper()` в качестве декоратора при определении функции-обертки.
 _____________

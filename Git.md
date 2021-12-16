@@ -44,7 +44,8 @@ git checkout HashCommit		# откатиться к коммиту
 # Все, что нужно сделать — переключиться на ветку, в которую вы хотите включить изменения, и выполнить команду git merge:
 git checkout master
 git merge iss53
-
+							'Errors'
+git -c http.sslVerify=false # отключить проверку TLS / SSL для одной команды git
 ```
 `gitk` — графическая утилита, которая показывает наш граф. В качестве ключей передаём имена веток или `--all`, чтобы показать все.
 ### Добавление репозитория на GitHub[](https://askdev.ru/q/mozhno-li-sozdat-udalennoe-repo-na-github-iz-cli-bez-otkrytiya-brauzera-4384/)
