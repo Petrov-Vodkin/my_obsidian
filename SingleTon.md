@@ -2,11 +2,26 @@
 #tag
 # SingleTon
 Шаблон Singleton предоставляет механизм создания одного и только один экземпляра объекта, и предоставление к нему _глобальную точку доступа_.
-```py
+#### Method : A [metaclass](https://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python)
+```python
+		# init НЕ ПЕРЕЗАПИСЫВАЕТ аргументы
+class Singleton(type):  
+    _instances = {}  
+    def __call__(cls, *args, **kwargs):  
+        if cls not in cls._instances:  
+            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)  
+        return cls._instances[cls]  
+# Метаклассы – это такие классы, экземпляры которых сами являются классами  
+  
+class MyClass(metaclass=Singleton):  
+    def __init__(self, v):  
+        self.v = v
+```
+```python
 # Если экземпляр существует, мы всегда будем использовать уже существующий объект
 class Singleton(object):
-    def __new__(cls):		#переопределяем метод __new__(метод для создания объектов)
-# hasattr(специальный метод Python, позволяющий определить, имеет ли объект определенное свойство)	
+    def __new__(cls):		#переопределяем метод __new__(метод для создания бъектов) 
+		# hasattr(специальный метод Python, позволяющий определить, имеет ли объект определенное свойство)	
         if not hasattr(cls, 'instance'):# проверка наличия у объекта cls свойства instance
             cls.instance = super(Singleton, cls).__new__(cls)
         return cls.instance
@@ -41,22 +56,7 @@ class Singleton(object):
 class MyClass(Singleton, BaseClass):
     pass
 ```
-#### Method : A [metaclass](https://stackoverflow.com/questions/100003/what-is-a-metaclass-in-python)
-```python
-class Singleton(type):
-    _instances = {}
-    def __call__(cls, *args, **kwargs):
-        if cls not in cls._instances:
-            cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
-        return cls._instances[cls]
-# Метаклассы – это такие классы, экземпляры которых сами являются классами
-#Python2
-class MyClass(BaseClass):
-    __metaclass__ = Singleton
-#Python3
-class MyClass(BaseClass, metaclass=Singleton):
-    pass
-```
+
 ### Отложенный экземпляр в **Singleton**
 Одним из вариантов использования шаблона Singleton является отложенная инициализация. Например, в случае импорта модулей мы можем автоматически создать объект, даже если он не нужен. Отложенное создание экземпляра гарантирует, что объект создается, только тогда, когда он действительно необходим.  
 В следующем примере кода, когда мы используем **s = Singleton()**, вызывается метод **__init__**, но при этом новый объект не будет создан. Фактическое создание объекта произойдет, когда мы используем **Singleton.getInstance()**.
