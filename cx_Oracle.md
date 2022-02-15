@@ -1,6 +1,8 @@
 2021-10-20 10:36
 [doc-en](https://cx-oracle.readthedocs.io/en/latest/user_guide/connection_handling.html)
 # cx_Oracle
+#### [Threading + Session; Python and Oracle Database Tutorial](https://oracle.github.io/python-cx_Oracle/samples/tutorial/Python-and-Oracle-Database-Scripting-for-the-Future.html)
+
 ```py
 # Installing the cx_Oracle module
 python3 -m pip install cx_Oracle --upgrade

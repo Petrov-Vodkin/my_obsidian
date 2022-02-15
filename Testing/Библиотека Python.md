@@ -27,6 +27,9 @@
 
 [[Flask]] - микрофреймворк для веб-разработки
 [[Jinja]] - шаблонизатор для языка программирования Python
+
+[[pytz]] - python tome zone
+
 #### SQL
 [[SQL]] | [[sqlite3]] | [[Pandas]] | [[psycopg2]] - postgress | 
 [[mysqlclient]] - MySQL | [[SQLAlchemy]] - [[ORM]](`работа с большим количеством баз данных`)
@@ -34,6 +37,7 @@
 ________________________________________
 ### DEFOLT
 ---__[[multiprocessing]]__---
+[[weakref]] - слабые ссылки
 #### File
 [[os]] [](https://egorovegor.ru/python-os-module/)
 [[pathlib]] [](https://t.me/c/1400358557/65)  - Работаем с файловыми путями

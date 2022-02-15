@@ -1,11 +1,12 @@
 2021-09-11 13:49
-[en doc](https://jinja.palletsprojects.com/en/2.11.x/) | [ru doc](https://docs-python.ru/packages/modul-jinja2-python/) `python -m pip install -U Jinja2`
+[en doc](https://jinja.palletsprojects.com/en/2.11.x/) | [ru doc](https://docs-python.ru/packages/modul-jinja2-python/) [&](http://xgu.ru/wiki/Jinja2) `python -m pip install -U Jinja2`
 # Jinja
 ### Общий синтаксис шаблона jinja2 в Python[](https://docs-python.ru/packages/modul-jinja2-python/sintaksis-shablona-jinja2/)
-```py
+```jinja
 {{ }}	# получить результат выражение, переменную или вызвать функцию и вывести значение в шаблоне
-
+{# комментарий #}
 ```
+
 [](https://pythonru.com/uroki/7-osnovy-shablonizatora-jinja)
 ### Инициализация движка шаблонов Jinja2 в Python.
 Модуль `Jinja` использует центральный объект, называемый шаблоном [`jinja2.Environment()`](https://docs-python.ru/packages/modul-jinja2-python/klass-environment/ "Класс Environment() модуля jinja2 в Python."). Экземпляры этого класса используются для хранения конфигурации и глобальных объектов, а также для [загрузки шаблонов](https://docs-python.ru/packages/modul-jinja2-python/zagruzchiki-shablonov-modulja-jinja2/ "Загрузчики шаблонов модуля jinja2 в Python.") из файловой системы или других мест. Даже если создавать шаблоны из строк с помощью конструктора класса [`jinja2.Template()`](https://docs-python.ru/packages/modul-jinja2-python/klass-template/ "Класс Template() модуля jinja2 в Python."), среда `Environment` создается автоматически, только она будет совместно используемая.
