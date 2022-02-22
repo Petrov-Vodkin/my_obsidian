@@ -1,6 +1,6 @@
 2021-10-28 19:43
 [doc_ru](https://docs-python.ru/tutorial/sintaksis-async-await-python/)
-# Asynh Py
+# Async Py
 #### [[asyncio]] | [[EventLoop]]+Asyncio+Aiohttp
 ----------------------------
 #### [Пример](https://webdevblog.ru/obzor-async-io-v-python-3-7/): асинхронные веб-запросы с aiohttp

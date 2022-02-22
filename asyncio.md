@@ -1,5 +1,5 @@
 2021-10-17 12:18
-[doc-py](https://docs-python.ru/standart-library/modul-asyncio-python/)
+[doc-py](https://docs-python.ru/standart-library/modul-asyncio-python/) [docs-python](https://docs-python.ru/standart-library/modul-asyncio-python/) [много примеров_ру](https://russianblogs.com/article/3480533869/) [he_учебник aiohttp](https://russianblogs.com/article/1894327626/)
 # asyncio
 Есть определенный список правил, касающийся использования команд `async`/`await`.
 
@@ -106,9 +106,7 @@ asyncio.run(main())
 
 #### Пример цикла событий
 
-Дальше создаются три задачи, которые добавляются в список. Они выполняются асинхронно с помощью `get_event_loop`, `create_task` и await библиотеки asyncio.
-
-Копировать
+Дальше создаются три задачи, которые добавляются в список. Они выполняются асинхронно с помощью `get_event_loop`, `create_task` и `await` библиотеки `asyncio`.
 
 ```python
 import asyncio
@@ -303,6 +301,22 @@ if __name__ == '__main__':
     # loop.run_forever()  
  	# loop.close()  
  	print(time() - t0)
+```
+[EX](https://betterprogramming.pub/asynchronous-programming-in-python-for-making-more-api-calls-faster-419a1d2ee058)
+```py
+import asyncio
+import aiohttp
+import os
+import time
+api_key = os.getenv('ALPHAVANTAGE_API_KEY')
+url = 'https://www.alphavantage.co/query?function=OVERVIEW&symbol={}&apikey={}'
+symbols = ['AAPL', 'GOOG', 'TSLA', 'MSFT', 'PEP']
+results = []
+async def get_symbols():
+    async with aiohttp.ClientSession() as session:
+        for symbol in symbols:
+            response = await session.get(url.format(symbol, api_key), ssl=False)
+asyncio.run(get_symbols())
 ```
 _____________
 #### Links
