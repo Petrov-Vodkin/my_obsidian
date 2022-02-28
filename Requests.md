@@ -1,5 +1,5 @@
 2021-03-06 19:00
-#tag
+[doc_ru](https://docs-python.ru/packages/modul-requests-python/sessii-seansy-session/)
 # Requests
 [Краткое руководство по библиотеке Python Requests](https://pythonru.com/biblioteki/kratkoe-rukovodstvo-po-biblioteke-python-requests)
 [Продвинутое руководство по библиотеке Python Requests](https://pythonru.com/biblioteki/prodvinutoe-rukovodstvo-po-biblioteke-python-requests)
@@ -58,5 +58,5 @@ with open('massive-body') as f:
 ```
 _____________
 #### Links
-[[Python]] 
+[[Python и HTTP]] | [[Python WEB]]
 [smartiqa.ru/blog](https://smartiqa.ru/blog/python-requests)

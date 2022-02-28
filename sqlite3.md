@@ -15,10 +15,61 @@ SQLite -  обладает всеми необходимыми функциям�
 import sqlite3 as sl
 ```
 ### Просмотр БД
-DB Browser SQLite
-Доступна консольная утилита для работы с базами (sqlite3.exe, «a command-line shell for accessing and modifying SQLite databases»)[.](https://habr.com/ru/post/149356/)
+`DB Browser SQLite`
+Доступна консольная утилита для работы с базами (`sqlite3`.exe, «a command-line shell for accessing and modifying SQLite databases»)[.](https://habr.com/ru/post/149356/)
 #### Консольная утилита 
 [Основные команды](https://ruseller.com/lessons.php?id=2277)
+**`Мета Команды`** - предназначены для формирования таблиц и других административных операций
+
+|Команда | Описание |
+|--------|----------|
+|.show |Показывает текущие настройки заданных параметров 
+|.databases |Показывает название баз данных и файлов 
+|.quit |Выход из sqlite3 
+|.tables |Показывает текущие таблицы 
+|.schema |Отражает структуру таблицы 
+|.header |Отобразить или скрыть шапку таблицы 
+|.mode |Выбор режима отображения данных таблицы 
+|.dump |Сделать копию базы данных в текстовом формате 
+
+```sql
+CREATE TABLE comments (
+    post_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    email TEXT NOT NULL,
+    website_url TEXT NULL,
+    comment TEXT NOT NULL );
+```
+```sql
+INSERT INTO comments ( name, email, website_url, comment )
+VALUES ( 'Shivam Mamgain', 'xyz@gmail.com',
+'shivammg.blogspot.com', 'Great tutorial for beginners.' );
+```
+```sql
+SELECT post_id, name, email, website_url, comment
+FROM comments;
+```
+```sql
+UPDATE comments
+SET email = 'zyx@email.com'
+WHERE name = 'Shivam Mamgain';
+```
+```sql
+DELETE FROM comments
+WHERE post_id = 9;
+```
+```sql
+# добавления новой колонки - введём поле username 
+ALTER TABLE comments
+ADD COLUMN username TEXT;
+
+# переименования таблицы `comments` на `Coms`
+ALTER TABLE comments
+RENAME TO Coms;
+```
+```sql
+DROP TABLE Coms;
+```
 _______________________________
 ### Создание подключения к БД
 

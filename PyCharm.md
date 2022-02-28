@@ -11,6 +11,8 @@ _____________________________
 [Selenium UI Testing](https://plugins.jetbrains.com/plugin/13691-selenium-ui-testing)
 [Grep Console](https://plugins.jetbrains.com/plugin/7125-grep-console)изменение `цвета` для разного типа `сообщений`, вкладки в консоли, аналог `grep` для вывода и.....
 [CSV](https://plugins.jetbrains.com/plugin/10037-csv)
+[Live Edit](https://www.youtube.com/watch?v=xf90Ko64hRc)  plugin to edit __`HTML`__ and __`CSS`__
+[Protobuf Support](https://plugins.jetbrains.com/plugin/8277-protobuf-support)
 ________________________
 #### [Визуализация потоков](https://www.jetbrains.com/help/pycharm/thread-concurrency-visualization.html)
 #### [Remote Debugging](https://www.jetbrains.com/help/pycharm/remote-debugging-with-product.html) with PyCharm

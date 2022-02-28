@@ -1,8 +1,7 @@
 2022-02-15 16:19
 [__selfedu__](https://proproprogs.ru/flask) [quickstart_ru](https://flask-russian-docs.readthedocs.io/ru/latest/quickstart.html) [habr_учебник](https://habr.com/ru/post/346306/)
 # Flask
-#### async
-`pip install flask[async]`
+### async `pip install flask[async]`
 ```python
 @app.route("/get-data")
 async def get_data():
@@ -53,6 +52,65 @@ def my_background_task(arg1, arg2):
     return result
 ```
 ______________________
+### Архитектура
+[[#app py]] [[#main py]] [[#config py]] [[#view.py]] [[#templates]] [[#models py]]
+#### app.py
+```python
+from flask import Flask  
+from config import Config
+
+app = Flask(__name__)			#  создаём  приложение
+app.config.from_object(Config) # подключаем конфиг
+```
+#### main.py
+```python
+from app import app  
+import view				# !!!!!!!!!
+  
+if __name__ == "__main__":  
+    app.run()
+	
+```
+#### config.py
+```python
+class Config:  
+    DEBUG = True
+	
+```
+#### view.py
+```python
+from app import app  
+from flask import render_template, g  
+from FDataBase import FDataBase  
+  
+# app.config.update(dict(DATABASE=os.path.join(app.root_path, 'flsite.db')))  
+  
+@app.route('/')  # "привязка" ф_ии к урлу  
+def index():  
+    return render_template('index.html', menu=dbase.getMenu(), posts=dbase.getPostsAnonce())
+```
+#### models py 
+```python
+			''' базы '''
+from app import db
+
+ROLE_USER = 0
+ROLE_ADMIN = 1
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    nickname = db.Column(db.String(64), index = True, unique = True)
+    email = db.Column(db.String(120), index = True, unique = True)
+    role = db.Column(db.SmallInteger, default = ROLE_USER)
+
+    def __repr__(self):
+        return '<User %r>' % (self.nickname)
+	
+```
+
+#### templates
+храняться html шаблоны
+#### @app.route
 ```python
 # EX отладка урлов
 with app.test_request_context():    # создание конт-та запросов 4отладки  
@@ -620,7 +678,8 @@ def userava():
     return h
 ```
 ## полезные расширения
-#### [Turbo-Flask](https://turbo-flask.readthedocs.io/en/latest/index.html)
+### [Turbo-Flask](https://turbo-flask.readthedocs.io/en/latest/index.html) 
+(`запуск задачи(корутины) в фоне`)
 Динамически изменить тег. [EX](https://blog.miguelgrinberg.com/post/dynamically-update-your-flask-web-pages-using-turbo-flask)
 ### WTForms: `формамы` + `вальдация`
 генерирует формы, проверяет их, наполняет начальной информацией, работать с reCaptcha, работа с ошибками и многое другое [официальном сайте](https://wtforms.readthedocs.io).
@@ -733,7 +792,7 @@ class LoginForm(FlaskForm):
     {% endif %}  
 {% endfor %}
 ```
-### Blueprint(эскизы)
+### `Blueprint`(эскизы)
 "а ля микросервис" толко для проэкта (пакет с админкой, логином, товар, блог и тд), у каждой части своя `дир.я(имя_эскиза)` с обычной структурой(`templates/имя_эскиза` файлы шаблонов, `static` – файлы оформления)
 ```python
 from flask import Blueprint
@@ -747,7 +806,7 @@ admin = Blueprint('admin', __name__, template_folder='templates', static_folder=
 # static_folder – подкаталог для статических файлов (необязательный параметр, при его отсутствии берется подкаталог static приложения).
 ```
 
-После создания эскиза его нужно зарегистрировать в основном приложении. Перейдем в файл flsite.py и выполним импорт переменной admin:
+После создания эскиза его нужно `зарегистрировать` в `основном файле` приложении или в `config`. Перейдем в файл flsite.py и выполним импорт переменной admin:
 
 ```python
 from admin.admin import admin
@@ -774,7 +833,7 @@ def login():
   
     return render_template('admin/login.html', title='Админ-панель')
 ```
-#### Blueprint подключение к БД
+#### blueprint подключение к БД
 Добавим декораторы in admin.py :  `before_request` – перед выполнением запроса; `teardown_request` – после выполнения запроса.
 ```python
 db = None
@@ -794,7 +853,7 @@ def teardown_request(request):
 @admin.route('/list-pubs')  
 def listpubs():  
     						""" Список статей """  
- if not isLogged():  
+	if not isLogged():  
         return redirect(url_for('.login'))  
   
     list = []  
@@ -808,9 +867,27 @@ def listpubs():
   
     return render_template('admin/listpubs.html', title='Список статей', menu=menu, list=list)
 ```
+#### Ссылка в css на blueprint
+```python
+# admin = Blueprint('admin', __name__, template_folder='templates', static_folder='static')
+''' в шаблон HTML передаём "название"(шо в кавычках) '''
+<a href = "{{url_for('admin')}}"> Adminka </a> >
+
+```
+
 ### Flask-`SQLAlchemy`
 `pip install Flask-SQLAlchemy`
+https://proproprogs.ru/flask/flask-sqlalchemy-ustanovka-sozdanie-tablic-dobavlenie-zapisey
+https://pythonru.com/biblioteki/sqlalchemy-v-flask
+https://habr.com/ru/post/196810/
+```python
+# У нас есть парочка пунктов, которые мы добавим в файл конфигурации (файл config.py):  
+import os
 
+basedir = os.path.abspath(os.path.dirname(__file__))
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
+SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
+```
 _______________
 #### Links
 [[Jinja]]

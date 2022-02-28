@@ -395,3 +395,4 @@ _____________
 #### Links
 http://www.webcorp.ru/page/php_post_get.html
 [видос примером через telnet(curl)](https://www.youtube.com/watch?v=C_QZtajkDf0&list=PLwWxlJniY3NxOfcr7d2uhwXKlB_fyY8wK&index=2)
+[[Python и HTTP]]
