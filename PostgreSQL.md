@@ -145,7 +145,7 @@ New-NetFirewallRule -Name 'POSTGRESQL-In-TCP' -DisplayName 'PostgreSQL (TCP-In)'
 
 ```sql
 								"Example"
-create database shop_test;  # 
+create database shop_test;  # ;;;;;;;_____;;;;;;;;;
 \c shop_test;				# connect to shop_test
 \d							# состояние бд
 create table customer(

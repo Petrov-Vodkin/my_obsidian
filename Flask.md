@@ -880,14 +880,63 @@ def listpubs():
 https://proproprogs.ru/flask/flask-sqlalchemy-ustanovka-sozdanie-tablic-dobavlenie-zapisey
 https://pythonru.com/biblioteki/sqlalchemy-v-flask
 https://habr.com/ru/post/196810/
+__`Драйвер's`__
+```bash
+pip install psycopg2-binary # postgres  || pip install psycopg 
+pip install mysql-connector	# mysql
+```
+
+__ для  `sqlite` + миграция:__
 ```python
 # У нас есть парочка пунктов, которые мы добавим в файл конфигурации (файл config.py):  
 import os
-
+		
 basedir = os.path.abspath(os.path.dirname(__file__))
-SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
-SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db') 
+# SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:@localhost/blog_flask'
+# путь к файлу с нашей базой данных
+SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository') #  dir где мы будем хранить файлы `SQLAlchemy-migrate`
 ```
+__`app.py`__
+```python
+from flask import Flask
+from flask.ext.sqlalchemy import SQLAlchemy
+
+app = Flask(__name__)
+app.config.from_object('config')
+db = SQLAlchemy(app)
+
+# from app import views, models
+```
+__`models.py`__:  
+```python
+from app import db
+
+ROLE_USER = 0
+ROLE_ADMIN = 1
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    nickname = db.Column(db.String(64), unique = True)
+    email = db.Column(db.String(120), unique = True)
+    role = db.Column(db.SmallInteger, default = ROLE_USER)
+    posts = db.relationship('Post', backref = 'author', lazy = 'dynamic')
+
+    def __repr__(self):
+        return '<User %r>' % (self.nickname)
+
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    body = db.Column(db.String(140))
+    timestamp = db.Column(db.DateTime)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+    def __repr__(self):
+        return '<Post %r>' % (self.body)
+```
+__`создать таблтцы`__ описанные в models
+
+
 _______________
 #### Links
 [[Jinja]]
