@@ -110,6 +110,21 @@ class User(db.Model):
 
 #### templates
 храняться html шаблоны
+### url_for и переменные URL-адреса
+`url_for()`  генерирует URL-адрес по имени функции-обработчика
+```python
+@app.route("/about") # с помощью декоратора route происходит привязка функции к URL-адресу.
+def about():
+    print( url_for('about') )
+    return render_template('about.html', title = "О сайте", menu = menu)
+
+@app.route("/profile/<username>") # <username> -некоторая переменная, значение которой определяется  URL-адресом
+def profile(username):
+    return f"Пользователь: {username}"
+# если в браузере набрать запрос: http://127.0.0.1:5000/profile/selfedu,
+# то username примет значение selfedu
+
+```
 #### @app.route
 ```python
 # EX отладка урлов
@@ -127,7 +142,7 @@ with app.test_request_context():    # создание конт-та запро�
 # `uuid`: принимает строки `UUID`.
 
 @app.route('/profile/<path:username>') # формирование урла из переменнй  
-# <username>  передаётся из браузерной строки  
+						# <username>  передаётся из браузерной строки  
 def profile(username):  
     return f"Пользователь: {username}"
 ```
@@ -875,13 +890,12 @@ def listpubs():
 
 ```
 
-### Flask-`SQLAlchemy`
-`pip install Flask-SQLAlchemy`
-https://proproprogs.ru/flask/flask-sqlalchemy-ustanovka-sozdanie-tablic-dobavlenie-zapisey
-https://pythonru.com/biblioteki/sqlalchemy-v-flask
-https://habr.com/ru/post/196810/
-__`Драйвер's`__
+### `SQLAlchemy` (Flask)
+[proproprogs](https://proproprogs.ru/flask/flask-sqlalchemy-ustanovka-sozdanie-tablic-dobavlenie-zapisey) | [pythonru](https://pythonru.com/biblioteki/sqlalchemy-v-flask) | [pythonru](https://pythonru.com/biblioteki/vvedenie-v-sqlalchemy) | [habr](https://habr.com/ru/post/196810/)
+
+__`INSTALL`__
 ```bash
+pip install Flask-SQLAlchemy
 pip install psycopg2-binary # postgres  || pip install psycopg 
 pip install mysql-connector	# mysql
 ```
@@ -934,11 +948,36 @@ class Post(db.Model):
     def __repr__(self):
         return '<Post %r>' % (self.body)
 ```
-__`создать таблтцы`__ описанные в models
+#### __`создать таблтцы`__ описанные в models
+```python
+""" в python консоль || скрипт"""
+import models		# импорт файла с описанными таблицами
+from app import db	# импорт объекта(экземпляра) базы данных
+db.create_all()		# создаём таблицы
+#  заполненеие созданных таблиц
+from models import Post	# импорт таблицы Post(класса)
+p = Post(title="First test post", body='First test post body')	# заполняем
+db.session.add(p)		# добавляем в сессию
+db.session.commit()		# запись в БД
+```
+### [Migration](https://flask-migrate.readthedocs.io/en/latest/index.html)
+```bash
+pip install flask-migrate
+# pip install flask-script # хз вроде ненадА
+cd project_dir 
+					#  аналогично с git
+flask db init									# __создать репозиторий миграции
+flask db migrate -m "Initial migration."		# commit
+flask db upgrade								# push
 
+```
+app.py
+```py
 
+```
 _______________
 #### Links
 [[Jinja]]
 [git_self_progect](https://github.com/selfedu-rus/flasksite-21)
 [официал док WTForms](https://wtforms.readthedocs.io)
+[Habr_mega_учебник_Flask](https://habr.com/ru/post/196810/)

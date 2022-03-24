@@ -10,7 +10,7 @@
 from multiprocessing import cpu_count
 print( 'число процессоров = {}'.format( cpu_count() ) )
 ```
-## РАБОТАЕТ(потоки)
+## Pool
 ```py
 # so EASY ))) юзал с request, НО работает как ПОТОКИ
 from multiprocessing.dummy import Pool as ThreadPool 
@@ -18,30 +18,31 @@ from multiprocessing.dummy import Pool as ThreadPool
 pool = ThreadPool(10) # say
 all = pool.map(check_vulnerability, packages)
 ```
-_____________________________________________________
-### Передать  аргумент через [процесс](https://pythonim.ru/moduli/multiprocessing-python)
-нужно использовать аргумент ключевого слова args. Следующий код будет полезен для понимания использования класса Process.  
-```py
-from multiprocessing import Process  
-  
-  
-def print_func(continent='Asia'):  
-    print('The name of continent is : ', continent)  
-  
-if __name__ == "__main__":  # confirms that the code is under main function  
- 	names = ['America', 'Europe', 'Africa']  
-    procs = []  # Pool процессов
-  
-    # instantiating process with arguments  
- 	for name in names:  
-		# создаем процесс для каждого аргумента из names  
- 		proc = Process(target=print_func, args=(name,)) 
-        procs.append(proc)  # добавляем процесс в пулл
-        proc.start()  		# стартуем выполнение процесса
-  
- 	for proc in procs:  
-        proc.join()			# дожидаемся выполнения процесса
+## Process[](https://teletype.in/@python_academy/T5DXZot4I)
+___!!!!!___ аргументы  в функции `Process(target=func, args=(number,))` это __`всегда кортеж`__, даже если там всего один элемент.
+```python
+import os
+from multiprocessing import Process
 
+
+def func(number):
+    proc = os.getpid()
+    print(f'{number} squared to {number ** 2} by process id: {proc}')
+# Теперь наконец создадим функцию, для создания 5 процессов для 5 целых чисел, и посмотрим что получилось.
+def main():
+    procs = []
+    numbers = [1, 2, 3, 4, 5]
+
+    for number in numbers:
+        proc = Process(target=func, args=(number,))	#  args=(number,)  !!! КОРТЕЖ !!!
+        procs.append(proc)
+        proc.start()
+		
+    for proc in procs:
+        proc.join()
+		
+if __name__ == '__main__': 
+	main()		
 ```
 ### Класс Pool
 #### v2
