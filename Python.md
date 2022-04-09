@@ -53,7 +53,7 @@ sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
 
 #### Links
 
-#### RES
+#### [[Ресурсы]]
 https://python-scripts.com/
 [docs.python.org](https://docs.python.org/3/ 'Tutorial')
 [Запуск разных версий ](https://ru.stackoverflow.com/questions/1136301/%d0%9f%d0%be%d0%bc%d0%b5%d0%bd%d1%8f%d1%82%d1%8c-%d0%b2%d0%b5%d1%80%d1%81%d0%b8%d1%8e-python-%d0%b2-windows-10#1136316)

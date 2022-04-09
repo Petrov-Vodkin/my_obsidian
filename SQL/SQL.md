@@ -63,3 +63,4 @@ alter table имя_табл drop constraint имя_табл_имя_строки_
 #### Links
 [Справочник mySQL](http://old.code.mu/sql/) 
 [Тренажёр SQL](https://sql-academy.org/) + [7res](https://proglib.io/p/7-caytov-dlya-ottachivaniya-navyka-napisaniya-sql-zaprosov-na-2019-2020-g-2019-11-13)
+[Как подружить Python и базы данных SQL. Подробное руководство](https://proglib.io/p/kak-podruzhit-python-i-bazy-dannyh-sql-podrobnoe-rukovodstvo-2020-02-27)

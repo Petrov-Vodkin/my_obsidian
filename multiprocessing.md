@@ -31,6 +31,8 @@ def func(number):
 # Теперь наконец создадим функцию, для создания 5 процессов для 5 целых чисел, и посмотрим что получилось.
 def main():
     procs = []
+	# можно через генератор ))  тогда ннада в  РАЗНЫХ циклах proc.start() и  proc.join()
+	# procs_v1 = (Process(target=func, args=(number,)) for number in numbers)
     numbers = [1, 2, 3, 4, 5]
 
     for number in numbers:
