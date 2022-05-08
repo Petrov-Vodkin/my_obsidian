@@ -23,6 +23,8 @@
 [[HTTP]] | [[Список кодов состояния HTTP]] | [[API]] | [[CSS selectors]] [[Xpath]]
 
 [[Git]]
+
+[[ВопросыОтыетыPy]]
 _____________
 #### Links
 [Основные вопросы с ответами](https://geteasyqa.com/qa/best-test-case-templates-examples/) | [150 вопросов/ответов для собеседования на вакансию Python. Часть 2 (с опытом работы)](https://kirill-sklyarenko.ru/lenta/150-voprosov-na-sobesedovanie-python-s-opytom-raboty) | [80 практических вопросов](https://nuancesprog.ru/p/11460/) | [15 вопросов по Python](https://proglib.io/p/python-interview) | [Топ 25 вопросов и ответов](https://pythonru.com/baza-znanij/voprosy-na-sobesedovanii-python) | [Python: вопросы на собеседовании. Часть I. Junior](https://pythonist.ru/python-voprosy-sobesedovaniya-chast-i-junior/#qst)
