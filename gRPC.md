@@ -688,10 +688,9 @@ docker run -p 127.0.0.1:5000:5000/tcp marketplace
 
 Ниже мы создаем сеть под названием `microservices` и запускаем в ней микросервис рекомендаций. Сначала остановите запущенные в данный момент контейнеры с помощью `Ctrl + C`. Затем запустите следующее:
 
-```
-        docker network create microservices
-docker run -p 127.0.0.1:50051:50051/tcp --network microservices \
-             --name recommendations recommendations
+```bash
+docker network create microservices
+docker run -p 127.0.0.1:50051:50051/tcp --network microservices --name recommendations recommendations
     
 ```
 
@@ -701,32 +700,26 @@ docker run -p 127.0.0.1:50051:50051/tcp --network microservices \
 
 marketplace.py
 
-```
-        recommendations_channel = grpc.insecure_channel("localhost:50051")
-    
+```python
+recommendations_channel = grpc.insecure_channel("localhost:50051")    
 ```
 
 нужно изменить так, чтобы мы могли подключаться к контейнеру `recommendations:50051`. Для удобства последующей работы мы укажем имя в переменной среды. Заменим строку выше двумя следующими:
 
 marketplace.py
 
-```
-        recommendations_host = os.getenv("RECOMMENDATIONS_HOST", "localhost")
-recommendations_channel = grpc.insecure_channel(
-    f"{recommendations_host}:50051"
-)
-
-    
+```python
+recommendations_host = os.getenv("RECOMMENDATIONS_HOST", "localhost")
+recommendations_channel = grpc.insecure_channel(f"{recommendations_host}:50051")
 ```
 
 Эти строчки позволяют загружать имя хоста микросервиса рекомендаций в переменную среды `RECOMMENDATIONS_HOST`. Если переменная среды отсутствует, то по умолчанию будет использоваться значение `localhost`. Это помогает запускать один и тот же код и непосредственно на компьютере, и внутри контейнера.
 
 Мы изменили код, нужно пересобрать образ `marketplace`. Запустим его внутри сети:
 
-```
-        docker build . -f marketplace/Dockerfile -t marketplace
-docker run -p 127.0.0.1:5000:5000/tcp --network microservices \
-             -e RECOMMENDATIONS_HOST=recommendations marketplace
+```bash
+docker build . -f marketplace/Dockerfile -t marketplace
+docker run -p 127.0.0.1:5000:5000/tcp --network microservices -e RECOMMENDATIONS_HOST=recommendations marketplace
     
 ```
 
@@ -740,7 +733,7 @@ docker run -p 127.0.0.1:5000:5000/tcp --network microservices \
 
 docker-compose.yaml
 
-```
+```yaml
         version: "3.8"
 services:
 
@@ -794,9 +787,8 @@ networks:
 
 В этом руководстве мы не будем подробно вдаваться в синтаксис, поскольку он хорошо документирован и в действительности делает то же самое, что мы уже делали вручную. Но теперь для запуска достаточно набрать лишь одну команду:
 
-```
-        docker-compose up
-    
+```bash
+docker-compose up
 ```
 
 ### Тестирование

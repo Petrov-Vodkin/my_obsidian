@@ -228,22 +228,10 @@ docker push eon01/nginx
   
 
 ### Создание сети
-
-  
-
-```
+```bash
 docker network create -d overlay MyOverlayNetwork
-```
-
-  
-
-```
 docker network create -d bridge MyBridgeNetwork
-```
 
-  
-
-```
 docker network create -d overlay \
   --subnet=192.168.0.0/16 \
   --subnet=192.170.0.0/16 \
@@ -254,12 +242,7 @@ docker network create -d overlay \
   --aux-address="my-printer=192.170.1.5" --aux-address="my-nas=192.170.1.6" \
   MyOverlayNetwork
 ```
-
-  
-
 ### Удаление сети
-
-  
 
 ```
 docker network rm MyOverlayNetwork
