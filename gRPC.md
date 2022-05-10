@@ -267,7 +267,7 @@ from recommendations_pb2_grpc import RecommendationsStub
 
 Теперь мы можем сделать __`RPC-запрос`__:
 
-```py
+```python
 channel = grpc.insecure_channel("localhost:50051")
 client = RecommendationsStub(channel)
 request = RecommendationRequest(
@@ -283,7 +283,21 @@ grpc._channel._InactiveRpcError: <_InactiveRpcError of RPC that terminated with:
     ...
    """ 
 ```
+Пример с конт-м мен-ром with(хз провильно ли(останется многопоточность??))
+```python
+from alaska_pb2_grpc import AlaskerStub
+from alaska_pb2 import Feature
+import grpc
 
+if __name__ == "__main__":
+    with grpc.insecure_channel('0.0.0.0:4326') as channel:
+        alasker_stub = AlaskerStub(channel)
+
+        print(channel._connectivity_state.connectivity)
+
+        rivers = alasker_stub.GetRivers(Feature())
+        for river in rivers.rivers:
+```
 На порту 50051 мы создали соединение с `localhost`, то есть вашей собственной машиной. Порт 50051 является стандартным портом для gRPC, можете его изменить. Затем передаем канал `RecommendationsStub`, чтобы создать экземпляр клиента.
 Теперь мы можем вызвать метод `Recommend`, который мы определили в микросервисе `Recommendations`. Однако мы получаем исключение, поскольку микросервис пока еще не работает на `localhost: 50051`. Пора приняться за серверную часть.
 
@@ -588,8 +602,8 @@ python recommendations.py
 
 Recommendations/Dockerfile
 
-```
-        FROM python
+```Dockerfile
+FROM python
 
 RUN mkdir /service
 COPY protobufs/ /service/protobufs/
@@ -621,39 +635,29 @@ ENTRYPOINT [ "python", "recommendations.py" ]
     ├── recommendations.py
     ├── recommendations_pb2.py
     ├── recommendations_pb2_grpc.py
-    └── requirements.txt
-
-    
+    └── requirements.txt    
 ```
 
 Наконец, мы открываем микросервис наружу Docker-образа на порте `50051` и говорим Docker запустить наш микросервис в Python, передав название файла для запуска.
 
 Мы описали всю процедуру в Dockerfile. Чтобы сгенерировать Docker-образ, перейдем на уровень выше относительно Dockerfile и запустим команду `build`:
 
-```
-        docker build . -f recommendations/Dockerfile -t recommendations
-    
-```
-
-Когда Docker создаст образ, мы сможем его запустить:
-
-```
-        docker run -p 127.0.0.1:50051:50051/tcp recommendations
-    
+```bash
+docker build . -f recommendations/Dockerfile -t recommendations    
+# Когда Docker создаст образ, мы сможем его запустить:
+docker run -p 127.0.0.1:50051:50051/tcp recommendations 
 ```
 
 Вы не увидите никаких дополнительных сообщения, но микросервис рекомендаций теперь работает в Docker-контейнере. Когда мы запускаем образ, на его основе создается контейнер. Мы можем запустить образ несколько раз, чтобы развернуть несколько контейнеров.
 
 Параметр `-p 127.0.0.1:50051:50051/tcp` указывает Docker перенаправлять TCP-соединения с порта 50051 на вашем компьютере на порт `50051` внутри контейнера.
 
-### Dockerfile для Marketplace[](http://localhost:8888/doc/tree/microservices/gRPC.ipynb#Dockerfile-%D0%B4%D0%BB%D1%8F-Marketplace)
-
+### Dockerfile для Marketplace
 Теперь создадим образ `Marketplace`. Напишем аналогичный файл `Marketplace/Dockerfile`:
-
 Marketplace/Dockerfile
 
-```
-        FROM python
+```Dockerfile
+FROM python
 
 RUN mkdir /service
 COPY protobufs/ /service/protobufs/
@@ -666,18 +670,14 @@ RUN python -m grpc_tools.protoc -I ../protobufs --python_out=. \
 
 EXPOSE 5000
 ENV FLASK_APP=marketplace.py
-ENTRYPOINT [ "flask", "run", "--host=0.0.0.0"]
-    
+ENTRYPOINT [ "flask", "run", "--host=0.0.0.0"]    
 ```
-
 Этот Dockerfile очень похож на тот, что мы подготовили для микросервиса Recommendations, лишь с некоторыми отличиями в конце: `ENV FLASK_APP=marketplace.py` устанавливает значение переменной `FLASK_APP` внутри образа, это необходимо для корректной работы Flask. Параметр `--host=0.0.0.0` позволяет Flask принимать соединения не только от localhost внутри образа.
 
 Собираем образ и запускаем контейнер:
-
-```
-        docker build . -f marketplace/Dockerfile -t marketplace
+```bash
+docker build . -f marketplace/Dockerfile -t marketplace
 docker run -p 127.0.0.1:5000:5000/tcp marketplace
-    
 ```
 
 ### Настройка сети[](http://localhost:8888/doc/tree/microservices/gRPC.ipynb#%D0%9D%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-%D1%81%D0%B5%D1%82%D0%B8)

@@ -8,7 +8,7 @@ micro  Dockerfile	# создаём Dockfile - в него что ниже
 ```
 ```Dockerfile
 FROM python:3.6-alpine3.8          
-# Скачиваем легковесный образ python-alpine
+# Скачиваем легковесный образ python-alpine |  https://hub.docker.com/_/python?tab=description
 COPY 1.py /app/                    
 # Копируем 1.py с компьютера в дирректорию /app образа
 WORKDIR /app                       
@@ -146,4 +146,4 @@ EXPOSE 80
 
 _____________
 #### Links
-[[VirtualOS]]
+[[VirtualOS]] | [[Docker]]
