@@ -96,8 +96,13 @@ infinity = float("inf")
 ```
 ### Date & time
 #### Вычисление `времени` выполнения в оболочке 
+```python
+import cProfile
+
+cProfile.run('sum([i * 2 for i in range(10000)])')
+```
 [[Decorators]]
-```py
+```python
 @contextlib.contextmanager  
 def report_time(test):  
     t0 = time.time()  

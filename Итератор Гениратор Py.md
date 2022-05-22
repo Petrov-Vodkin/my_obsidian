@@ -18,7 +18,7 @@ while True:
         break
 ```
 `Итерируемый объект` - об-к, потдерживает возможность "обхода" поочерёдно своих элементов, возвращает свои элементы по одному.  Создать объект `итератор` => `iter(Итерируемый объект)`
-```py						
+```python						
 						# реализация простого объекта итератора
 from random import random  
   
@@ -40,14 +40,36 @@ class RandomIterator:
   
 for x in RandomIterator(10):  
     print(x)
+```
+```python
+			""" итератор, который возвращает серию чисел """
+class Series(object):
+    def __init__(self, low, high):
+        self.current = low
+        self.high = high
 
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.current > self.high:
+            raise StopIteration
+        else:
+            self.current += 1
+            return self.current - 1
+
+n_list = Series(1,10)    
+print(list(n_list))
 ```
 ### Генератор
+[Генератор](https://docs-python.ru/tutorial/osnovnye-vstroennye-tipy-python/tip-dannyh-generator-generator/ "Тип данных generator (генератор).") - это функция, которая возвращает объект [итератора](https://docs-python.ru/tutorial/osnovnye-vstroennye-tipy-python/tip-dannyh-iterator-iterator/ "Тип данных Iterator (итератор).")
 -`создает последовательность` значений `для итерации`
 -`удобный синтаксис для написания итераторов`(по средствам yield) (не нужно реалиовывать класс с методами `__iter__` и `__next__`)
+-генераторы могут быть двух разных типов: функции-генераторы и генераторные выражения
+ 
 концепция отложенного исполнения, продолжим исполнение ф-ии при следующем обращении к ней
 
-```py
+```python
 # выражение-генератор: выбрасывает ИСКЛЮЧЕНИЕ StopIteration, если закончились элементы
 gen = (i+1 for i in range(10)) # 'выражения-генераторы - генерируют итератор'
 # элементы не хранятся в памяти(выдаёт по очереди по 1-му при вызове) next()
@@ -65,7 +87,19 @@ def squares(n):
 for i in squares(7):
     print(i)		
 ```
+```python
+def fib(a=0, b=1):  
+    """Generator that yields Fibonacci numbers. `a` and `b` are the seed values"""  
+    while True:  
+        yield a  
+        a, b = b, a + b  
+  
+  
+f = fib()  
+print(', '.join(str(next(f)) for _ in range(10)))
+```
 
 #### Links
 [[Python]]
 [you_tube](https://www.youtube.com/watch?v=vn6bV6BYm7w&list=PLwWxlJniY3NzqGM0Kjmd_zmUqqH3pUSYL&index=31)
+https://pythonist.ru/iteratory-i-generatory-v-python/

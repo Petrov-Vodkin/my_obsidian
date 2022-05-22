@@ -63,6 +63,8 @@ $PSVersionTable		# версия powershell
 ```
 ### Операции с файлами
 ```shell
+								'просмотр'
+Get-Content -wait file.txt	#  аналог tail -f
 								"Создать"
 ni file_name # ==  New-Item -Path . -Name` `"testfile1.txt"` `-ItemType` `"file"` `-Value` `"Это текстовая строка в файле."
 # Создание нескольких файлов:

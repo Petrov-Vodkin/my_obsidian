@@ -447,7 +447,7 @@ recommendations {
 Создайте новый каталог `marketplace/` и поместите в него файл `marketplace.py` для своего микросервиса `Marketplace`. Дерево каталогов должно теперь выглядеть так:
 
 ```
-        .
+.
 ├── marketplace/
 │   ├── marketplace.py
 │   ├── requirements.txt
@@ -734,7 +734,7 @@ docker run -p 127.0.0.1:5000:5000/tcp --network microservices -e RECOMMENDATIONS
 docker-compose.yaml
 
 ```yaml
-        version: "3.8"
+version: "3.8"
 services:
 
     marketplace:
@@ -797,8 +797,8 @@ docker-compose up
 
 recommendations/recommendations\_test.py
 
-```
-        # recommendations/recommendations_test.py
+```python
+# recommendations/recommendations_test.py
 
 from recommendations import RecommendationService
 from recommendations_pb2 import BookCategory, RecommendationRequest
@@ -815,8 +815,8 @@ def test_recommendations():
 
 [Интеграционное тестирование](https://ru.wikipedia.org/wiki/%D0%98%D0%BD%D1%82%D0%B5%D0%B3%D1%80%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%BE%D0%B5_%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5#:~:text=Integration%20and%20Testing%2C%20%D0%B0%D0%B1%D0%B1%D1%80%D0%B5%D0%B2%D0%B8%D0%B0%D1%82%D1%83%D1%80%D0%B0%20%D0%B0%D0%BD%D0%B3%D0%BB,%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F%20%D0%B8%20%D0%BF%D1%80%D0%B5%D0%B4%D1%88%D0%B5%D1%81%D1%82%D0%B2%D1%83%D0%B5%D1%82%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%BD%D0%BE%D0%BC%D1%83%20%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8E.) включает в себя выполнение автоматизированных тестов с множеством неимитируемых микросервисов. Так что это немного сложнее, но не слишком сложно. Добавим файл `marketplace/marketplace_integration_test.py`
 
-```
-        from urllib.request import urlopen
+```python
+from urllib.request import urlopen
 
 def test_render_homepage():
     homepage_html = urlopen("http://localhost:5000").read().decode("utf-8")
@@ -829,8 +829,8 @@ def test_render_homepage():
 
 Запустив микросервисы Python с помощью docker-compose, мы можем запускать внутри них команды с помощью `docker-compose exec`. Например, чтобы запустить интеграционный тест внутри контейнера `Marketplace`, можно выполнить следующий набор команд:
 
-```
-        docker-compose build
+```bash
+docker-compose build
 docker-compose up
 docker-compose exec marketplace pytest marketplace_integration_test.py
     

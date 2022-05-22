@@ -4,34 +4,8 @@
 #### [[Руководство по декораторам]]
 #### [[functool]]
 **`Декораторы`** — это, по сути, "обёртки", которые дают нам `возможность изменить поведение функции, не изменяя её код`.
-
-[функции в python](https://pythonworld.ru/tipy-dannyx-v-python/vse-o-funkciyax-i-ix-argumentax.html) являются объектами, соответственно, их `можно возвращать` из другой функции или `передавать в качестве аргумента`. Также следует помнить, что функция в python может быть определена и внутри другой функции.
-```py
-def timeit(func):						# принемает декорируемую ф-ю 
-	def wrapper(*args, **kwargs):		# принемает аргументы декорируемой ф-ии 
-		start = datetime.now()			# текущее время
-		result = func(*args, **kwargs)	# run func (для которой замеряем время выполнения)
-		print(datetime.now() - start)	# подсчёт времени
-		return result					# 
-	return wrapper
-	
-@timeit									# == timeit(you_func)
-def you_func(n):
-	print(n)
-	
-					'OR'
-@contextlib.contextmanager  
-def report_time(test):  
-    t0 = time.time()  
-    yield  
-	print("Time needed for `%s' called: %.2fs"  
-	% (test, time.time() - t0))  
-  
-# при вызове ф-я может быть как саргуметнами так и без них  
-with report_time("serialized_trade"):  
-    requests.get(URL)
-```
 Смысл паттерна Декоратор заключается в том, что некоторая функция заворачивается в другую функцию, приобретая от нее новые возможности. Например, так можно вести логи, вводить пред- и постусловия, добавлять методы для классов.
+[функции в python](https://pythonworld.ru/tipy-dannyx-v-python/vse-o-funkciyax-i-ix-argumentax.html) являются объектами, соответственно, их `можно возвращать` из другой функции или `передавать в качестве аргумента`. Также следует помнить, что функция в python может быть определена и внутри другой функции.
 ### [Встроенные декораторы](https://python-scripts.com/decorators)
 `@classmethod`
 принимает единственный параметр: function — Функция, которую нужно преобразовать в метод класса. И возвращает метод класса для данной функции[](https://pythonstart.ru/osnovy/classmethod-staticmethod-python)
@@ -89,7 +63,61 @@ Traceback (most recent call last):
  File "<string>", line 1, in <fragment>
 AttributeError: can't set attribute
 ```
-### Decorate class 
+## Snippets
+#### Декораторы с аргументами
+```python
+						'''Декораторы с аргументами через класс'''
+class DecoratorArgs:  
+    def __init__(self, name=None):  
+        print('> Декоратор с аргументами __init__:', name)  
+        self.name = name  
+  
+    def __call__(self, func):  
+        def wrapper(*args, **kwargs):  
+            print('>>> до обернутой функции', self.name)  
+            func(*args, **kwargs)  
+            print('>>> после обернутой функции')  
+        return wrapper  
+  
+  
+@DecoratorArgs("teste")  
+def add(a, b):  
+    print('функция add:', a, b)  
+  
+print('>> старт')  
+add(b=10, a=20)  
+print('>> конец')  
+
+add(10, 20)
+```
+#### Decorate для подсчёта времен исполнения ф-ии
+```python
+def timeit(func):						# принемает декорируемую ф-ю 
+	def wrapper(*args, **kwargs):		# принемает аргументы декорируемой ф-ии 
+		start = datetime.now()			# текущее время
+		result = func(*args, **kwargs)	# run func (для которой замеряем время выполнения)
+		print(datetime.now() - start)	# подсчёт времени
+		return result					# 
+	return wrapper
+	
+@timeit									# == timeit(you_func)
+def you_func(n):
+	print(n)
+	
+					'OR'
+@contextlib.contextmanager  
+def report_time(test):  
+    t0 = time.time()  
+    yield  
+	print("Time needed for `%s' called: %.2fs"  
+	% (test, time.time() - t0))  
+  
+# при вызове ф-я может быть как саргуметнами так и без них  
+with report_time("serialized_trade"):  
+    requests.get(URL)
+```
+
+#### Decorate class 
 ```py
 from typing import Type
 
@@ -118,7 +146,7 @@ class Sample2(Sample1):
 
 print(str(Sample2(1, 2, 3)))
 ```
-#### Links
+### Links
 [[Python]] | [[Fixtures]]
 
 https://youtu.be/Ss1M32pp5Ew?list=PLlWXhlUMyooYqypXIju-5czBtppKaWimP
