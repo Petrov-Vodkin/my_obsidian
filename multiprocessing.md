@@ -152,5 +152,7 @@ print(l[2:5]) 	# [4, 9, 16]
 _____________
 #### Links
 [[Python]]
+[Полное руководство параллельного программирования на Python](http://onreader.mdl.ru/MasteringConcurrencyInPython/content/index.html)
+[concurrent.futures](https://линуксблог.рф/mnogopotochnost-v-python-razbiraemsya-podrobnej/)
 https://pythonpip.ru/osnovy/mnogoprotsessornost-python
 https://digitology.tech/docs/python_3/library/multiprocessing.html

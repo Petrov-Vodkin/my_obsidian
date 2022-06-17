@@ -28,6 +28,7 @@
 _____________
 #### Links
 [Основные вопросы с ответами](https://geteasyqa.com/qa/best-test-case-templates-examples/) | [150 вопросов/ответов для собеседования на вакансию Python. Часть 2 (с опытом работы)](https://kirill-sklyarenko.ru/lenta/150-voprosov-na-sobesedovanie-python-s-opytom-raboty) | [80 практических вопросов](https://nuancesprog.ru/p/11460/) | [15 вопросов по Python](https://proglib.io/p/python-interview) | [Топ 25 вопросов и ответов](https://pythonru.com/baza-znanij/voprosy-na-sobesedovanii-python) | [Python: вопросы на собеседовании. Часть I. Junior](https://pythonist.ru/python-voprosy-sobesedovaniya-chast-i-junior/#qst)
+[?сы на python junior'a/middl'a](https://pycoder.ru/python-interview-questions/)
 
 [QA bible](https://github.com/VladislavEremeev/QA_bible 'это почти 300 страниц обновляемой смеси ответов на вопросы с реальных собеседований на QA')
 [CI/CD habr](https://habr.com/ru/company/otus/blog/515078/)

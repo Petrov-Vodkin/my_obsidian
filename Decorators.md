@@ -17,8 +17,8 @@ class Person:
         self.name = name
         self.age = age
 
-    @classmethod # создаём класс внутри класса 
-    def fromBirthYear(cls, name, birthYear): # принимает класс, имя и год рождения, 
+    @classmethod 
+    def fromBirthYear(cls, name, birthYear): # принимает ссылку на класс, имя и год рождения, 
         return cls(name, date.today().year - birthYear)
 
     def display(self):
